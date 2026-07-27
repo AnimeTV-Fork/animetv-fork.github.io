@@ -37,15 +37,39 @@ const CAROUSEL_ITEMS: MockItem[] = [
 
 export const ActionCarousel: React.FC = () => {
   const [focusedIndex, setFocusedIndex] = useState(0);
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
-  // D-Pad simulator keyboard handler
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowRight' || e.key === 'd') {
-      setFocusedIndex((prev) => (prev + 1) % CAROUSEL_ITEMS.length);
-    } else if (e.key === 'ArrowLeft' || e.key === 'a') {
-      setFocusedIndex((prev) => (prev - 1 + CAROUSEL_ITEMS.length) % CAROUSEL_ITEMS.length);
-    }
-  };
+  // Global window listener for keyboard interaction so it works immediately upon scroll
+  React.useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      // Avoid intercepting if user is in input/textarea/select
+      const activeEl = document.activeElement;
+      if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.getAttribute('contenteditable') === 'true')) {
+        return;
+      }
+
+      if (['ArrowRight', 'd', 'D'].includes(e.key)) {
+        e.preventDefault();
+        setFocusedIndex((prev) => {
+          const next = (prev + 1) % CAROUSEL_ITEMS.length;
+          swiperInstance?.slideTo(next);
+          return next;
+        });
+      } else if (['ArrowLeft', 'a', 'A'].includes(e.key)) {
+        e.preventDefault();
+        setFocusedIndex((prev) => {
+          const prevIdx = (prev - 1 + CAROUSEL_ITEMS.length) % CAROUSEL_ITEMS.length;
+          swiperInstance?.slideTo(prevIdx);
+          return prevIdx;
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleGlobalKeyDown);
+    };
+  }, [swiperInstance]);
 
   return (
     <section className="py-24 bg-[#0a0612] relative overflow-hidden border-b border-white/5">
@@ -62,11 +86,7 @@ export const ActionCarousel: React.FC = () => {
         </div>
 
         {/* Carousel + D-pad Simulator Frame */}
-        <div 
-          className="relative max-w-4xl mx-auto focus:outline-none"
-          tabIndex={0}
-          onKeyDown={handleKeyDown}
-        >
+        <div className="relative max-w-4xl mx-auto focus:outline-none">
           {/* Simulated TV Frame */}
           <div className="relative bg-[#11091d] border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl">
             
@@ -89,6 +109,7 @@ export const ActionCarousel: React.FC = () => {
               grabCursor={true}
               centeredSlides={true}
               slidesPerView={'auto'}
+              onSwiper={setSwiperInstance}
               coverflowEffect={{
                 rotate: 10,
                 stretch: 0,
