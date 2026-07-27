@@ -206,7 +206,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-muted/60 animate-bounce">
+      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center justify-center gap-1.5 text-muted/60 animate-bounce pointer-events-none z-20">
         <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Scroll</span>
         <Icon icon="mdi:chevron-down" className="text-lg text-primary/60" />
       </div>
