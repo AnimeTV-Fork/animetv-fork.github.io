@@ -42,7 +42,7 @@ export function Navbar() {
             className="flex items-center group"
           >
             <img
-              src="/assets/logo.svg"
+              src="assets/logo.svg"
               alt="AnimeTV"
               className="h-10 md:h-12 w-auto drop-shadow-[0_0_8px_var(--color-primary)] group-hover:scale-105 transition-transform"
             />

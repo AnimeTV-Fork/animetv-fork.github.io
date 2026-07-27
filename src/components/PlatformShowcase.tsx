@@ -27,7 +27,7 @@ const PLATFORMS: Platform[] = [
       'MediaSession background media controls integration'
     ],
     specs: 'Android 5.0+ (API 21) • FireOS 5+',
-    screenshot: '/assets/Home_Lists.png',
+    screenshot: 'assets/Home_Lists.png',
     downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk'
   },
   {
@@ -43,7 +43,7 @@ const PLATFORMS: Platform[] = [
       'Customizable Picture-in-Picture scaling boundaries'
     ],
     specs: 'Android 6.0+ (ARM64 & x86)',
-    screenshot: '/assets/Source_Selector.png',
+    screenshot: 'assets/Source_Selector.png',
     downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk'
   },
   {
@@ -59,7 +59,7 @@ const PLATFORMS: Platform[] = [
       'Automatic self-updating application client updater'
     ],
     specs: 'Windows 10 / 11 (64-bit Edition)',
-    screenshot: '/assets/Settings_Top.png',
+    screenshot: 'assets/Settings_Top.png',
     downloadUrl: 'https://github.com/AnimeTV-Fork/AnimeTV/releases'
   }
 ];

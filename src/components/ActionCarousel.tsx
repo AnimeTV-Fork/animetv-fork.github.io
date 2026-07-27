@@ -17,22 +17,22 @@ interface MockItem {
 }
 
 const ANIME_POSTERS = [
-  "/assets/Attack_On_Titan.jpg",
-  "/assets/Black_Clover_Season_2.jpg",
-  "/assets/Demon_Slayer.jpg",
-  "/assets/Jujutsu_Kaisen.jpg",
-  "/assets/Mushoku_Tensei.jpg",
-  "/assets/My_Hero_Academia.jpg",
-  "/assets/One_Piece.jpg"
+  "assets/Attack_On_Titan.jpg",
+  "assets/Black_Clover_Season_2.jpg",
+  "assets/Demon_Slayer.jpg",
+  "assets/Jujutsu_Kaisen.jpg",
+  "assets/Mushoku_Tensei.jpg",
+  "assets/My_Hero_Academia.jpg",
+  "assets/One_Piece.jpg"
 ];
 
 const CAROUSEL_ITEMS: MockItem[] = [
-  { id: 1, title: "Main Dashboard", category: "10-Foot Media Dashboard", image: "/assets/Home_Page.png" },
-  { id: 2, title: "Browsing & Rails", category: "Trending Recommendations", image: "/assets/Home_Lists.png" },
-  { id: 3, title: "Headless Scraper Selectors", category: "Independent Multi-Sources", image: "/assets/Source_Selector.png" },
-  { id: 4, title: "AniList & MAL Tracking", category: "Watchlist OAuth Sync", image: "/assets/My_List.png" },
-  { id: 5, title: "Weekly Releases", category: "Airing Schedule", image: "/assets/Airing_Schedule.png" },
-  { id: 6, title: "DNS-over-HTTPS Settings", category: "Bypass Filters & Bans", image: "/assets/Settings_Top.png" }
+  { id: 1, title: "Main Dashboard", category: "10-Foot Media Dashboard", image: "assets/Home_Page.png" },
+  { id: 2, title: "Browsing & Rails", category: "Trending Recommendations", image: "assets/Home_Lists.png" },
+  { id: 3, title: "Headless Scraper Selectors", category: "Independent Multi-Sources", image: "assets/Source_Selector.png" },
+  { id: 4, title: "AniList & MAL Tracking", category: "Watchlist OAuth Sync", image: "assets/My_List.png" },
+  { id: 5, title: "Weekly Releases", category: "Airing Schedule", image: "assets/Airing_Schedule.png" },
+  { id: 6, title: "DNS-over-HTTPS Settings", category: "Bypass Filters & Bans", image: "assets/Settings_Top.png" }
 ];
 
 export const ActionCarousel: React.FC = () => {

@@ -3,13 +3,13 @@ import anime from 'animejs';
 import { Icon } from '@iconify/react';
 
 const ANIME_POSTERS = [
-  "/assets/Attack_On_Titan.jpg",
-  "/assets/Black_Clover_Season_2.jpg",
-  "/assets/Demon_Slayer.jpg",
-  "/assets/Jujutsu_Kaisen.jpg",
-  "/assets/Mushoku_Tensei.jpg",
-  "/assets/My_Hero_Academia.jpg",
-  "/assets/One_Piece.jpg"
+  "assets/Attack_On_Titan.jpg",
+  "assets/Black_Clover_Season_2.jpg",
+  "assets/Demon_Slayer.jpg",
+  "assets/Jujutsu_Kaisen.jpg",
+  "assets/Mushoku_Tensei.jpg",
+  "assets/My_Hero_Academia.jpg",
+  "assets/One_Piece.jpg"
 ];
 
 export const Hero: React.FC = () => {
@@ -182,7 +182,7 @@ export const Hero: React.FC = () => {
               
               {/* Actual Image */}
               <img
-                src="/assets/Home_Page.png"
+                src="assets/Home_Page.png"
                 alt="AnimeTV App Dashboard"
                 className="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
               />
