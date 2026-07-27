@@ -65,10 +65,10 @@ export const ParticleBackground: React.FC<{ theme: string }> = ({ theme }) => {
     // Create a screen-tri to run post-processing fragment shader
     const geometry = new Triangle(gl);
 
-    // Purple theme vs Ocean blue theme colors mapped for WebGL (0.0 to 1.0)
-    const color1Val = theme === 'purple' ? [0.18, 0.05, 0.35] : [0.03, 0.12, 0.25];
-    const color2Val = theme === 'purple' ? [0.09, 0.05, 0.22] : [0.08, 0.28, 0.35];
-    const baseBgVal = theme === 'purple' ? [0.04, 0.02, 0.07] : [0.015, 0.035, 0.078];
+    // Teal/Orange colors mapped for WebGL (0.0 to 1.0)
+    const color1Val = [0.0, 0.28, 0.32]; // Deeper glowing teal (#004752)
+    const color2Val = [0.38, 0.21, 0.06]; // Deeper glowing orange (#61350f)
+    const baseBgVal = [0.0, 0.0, 0.0];   // Black background (#000000)
 
     const program = new Program(gl, {
       vertex,

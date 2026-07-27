@@ -4,18 +4,18 @@ import { motion } from 'framer-motion';
 
 export const Community: React.FC = () => {
   return (
-    <section className="py-24 bg-[#0a0612] relative overflow-hidden border-b border-white/5">
+    <section className="py-24 relative overflow-hidden" style={{ background: 'var(--color-bg-start)' }}>
+      {/* Section divider top */}
+      <div className="section-divider absolute top-0 left-0 right-0" />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left panel: text details */}
           <div className="space-y-6">
-            <span className="inline-block px-3 py-1 bg-primary/20 text-primary-glow rounded-full text-xs font-semibold uppercase tracking-widest border border-primary/30">
-              Community Driven
-            </span>
+            <span className="badge-glow">Community Driven</span>
             <h2 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tight leading-none">
               Open Source. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow">No Big Brother.</span>
+              <span className="gradient-text">No Big Brother.</span>
             </h2>
             <p className="text-muted text-base md:text-lg leading-relaxed">
               AnimeTV is actively developed under the GPLv3 license. Originally created by <strong className="text-white">Amarullz</strong>, the codebase is currently maintained by <strong className="text-white">jitendhull</strong>, <strong className="text-white">voltorb</strong>, and <strong className="text-white">tay</strong> with hundreds of community contributors.
@@ -37,7 +37,7 @@ export const Community: React.FC = () => {
                 href="https://github.com/AnimeTV-Fork/AnimeTV"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-lg transition-transform hover:scale-105 active:scale-95 flex items-center gap-2"
+                className="btn-magnetic btn-primary shine-sweep"
               >
                 <Icon icon="mdi:github" className="text-xl" />
                 Join the Fork

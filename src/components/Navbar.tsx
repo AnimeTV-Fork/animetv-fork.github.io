@@ -34,19 +34,18 @@ export function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center group"
           >
             <img
-              src="/assets/ic_launcher-playstore.png"
+              src="/assets/logo.svg"
               alt="AnimeTV"
-              className="w-8 h-8 drop-shadow-[0_0_8px_var(--color-primary)] group-hover:scale-110 transition-transform"
+              className="h-16 md:h-20 w-auto drop-shadow-[0_0_8px_var(--color-primary)] group-hover:scale-105 transition-transform"
             />
-            <span className="font-black text-lg tracking-tight hidden sm:inline">AnimeTV</span>
           </a>
 
           {/* Desktop Links */}
@@ -55,7 +54,7 @@ export function Navbar() {
               <button
                 key={l.href}
                 onClick={() => scrollTo(l.href)}
-                className="px-3.5 py-2 text-sm text-muted hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                className="px-3.5 py-2 text-sm text-[var(--color-muted)] hover:text-white transition-colors rounded-lg hover:bg-white/5"
               >
                 {l.label}
               </button>
@@ -68,7 +67,7 @@ export function Navbar() {
               href="https://github.com/AnimeTV-Fork/AnimeTV"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3.5 py-2 text-sm text-muted hover:text-white transition-colors rounded-lg hover:bg-white/5"
+              className="flex items-center gap-1.5 px-3.5 py-2 text-sm text-[var(--color-muted)] hover:text-white transition-colors rounded-lg hover:bg-white/5"
             >
               <Icon icon="mdi:github" className="text-base" />
               GitHub
@@ -77,7 +76,7 @@ export function Navbar() {
               href="https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-bold bg-gradient-to-r from-primary to-primary-glow text-white rounded-lg hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-primary/20"
+              className="btn-magnetic btn-primary text-sm px-4 py-2"
             >
               Download
             </a>
@@ -86,7 +85,7 @@ export function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-muted hover:text-white transition-colors"
+            className="md:hidden p-2 text-[var(--color-muted)] hover:text-white transition-colors"
             aria-label="Toggle menu"
           >
             <Icon icon={mobileOpen ? 'mdi:close' : 'mdi:menu'} className="text-2xl" />
@@ -102,14 +101,14 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-50 bg-black/90 backdrop-blur-xl border-b border-white/10 md:hidden"
+            className="fixed inset-x-0 top-24 z-50 bg-black/90 backdrop-blur-xl border-b border-white/10 md:hidden"
           >
             <div className="flex flex-col p-4 gap-1">
               {links.map((l) => (
                 <button
                   key={l.href}
                   onClick={() => scrollTo(l.href)}
-                  className="px-4 py-3 text-left text-sm text-muted hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="px-4 py-3 text-left text-sm text-[var(--color-muted)] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {l.label}
                 </button>

@@ -53,9 +53,21 @@
 6. **Analytics** — add Plausible or Umami script tag to `index.html` for privacy-respecting analytics.
 7. **SEO** — OpenGraph/Twitter meta tags already in index.html. Add `react-helmet-async` for dynamic per-page meta if routing is added.
 
+## Design System (Polish Pass)
+
+A unified CSS design system was added to `index.css` using CSS custom properties:
+
+- **Color tokens** — `--color-bg-start`, `--color-bg-end`, `--color-primary`, `--color-glow`, `--color-text`, `--color-muted` etc.
+- **Reusable classes** — `.glass-card`, `.badge-glow`, `.gradient-text`, `.btn-primary`, `.btn-magnetic`, `.section-padding`, `.section-divider`, `.noise-overlay`
+- **Consistent glow effects** — standardized `box-shadow` glow on hover across all interactive elements
+- **Noise texture** — inline SVG data URI applied via `.noise-overlay` pseudo-element, no network request
+- **prefers-reduced-motion** — disables all CSS animations/transitions globally
+
+All components reference these shared tokens/classes instead of inline Tailwind color values, making future theme changes a single-file edit.
+
 ## Performance Notes
 
-- Build output: ~663 KB JS (gzipped ~208 KB) across 4 chunks + 43 KB CSS
+- Build output: ~673 KB JS (gzipped ~209 KB) across 4 chunks + 49 KB CSS
 - Swiper and animation libs are code-split into separate chunks
 - `prefers-reduced-motion` disables all CSS animations and transitions
 - Inter font loaded via Google Fonts CDN with `display=swap` for fast rendering

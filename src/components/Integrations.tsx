@@ -36,15 +36,17 @@ const TRACKERS: Tracker[] = [
 
 export const Integrations: React.FC = () => {
   return (
-    <section className="py-24 bg-[#0d0717] relative overflow-hidden border-b border-white/5">
+    <section className="section-padding relative overflow-hidden" style={{ background: 'var(--color-bg-start)' }}>
+      <div className="section-divider absolute top-0 left-0 right-0" />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         
         {/* Title */}
         <div className="text-center mb-16">
+          <span className="badge-glow mb-4 inline-flex">Integrations</span>
           <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">
-            Unified <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow">Tracker Sync</span>
+            Unified <span className="gradient-text">Tracker Sync</span>
           </h2>
-          <p className="text-muted text-lg max-w-2xl mx-auto">
+          <p className="text-[var(--color-muted)] text-lg max-w-2xl mx-auto">
             Sync your watchlist across databases instantly. Media tracking that respects your time.
           </p>
         </div>
@@ -59,7 +61,7 @@ export const Integrations: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               whileHover={{ scale: 1.02 }}
-              className="glass-panel p-8 rounded-2xl border border-white/5 flex flex-col justify-between"
+              className="glass-card p-8 flex flex-col justify-between"
             >
               <div>
                 {/* Brand Logo & Title */}
@@ -76,10 +78,10 @@ export const Integrations: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-muted text-sm leading-relaxed mb-6">{tracker.desc}</p>
+                <p className="text-[var(--color-muted)] text-sm leading-relaxed mb-6">{tracker.desc}</p>
 
                 {/* Sub Features list */}
-                <ul className="space-y-3 font-mono text-xs text-muted">
+                <ul className="space-y-3 font-mono text-xs text-[var(--color-muted)]">
                   {tracker.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -90,7 +92,7 @@ export const Integrations: React.FC = () => {
               </div>
 
               <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center text-xs font-mono">
-                <span className="text-muted">Status</span>
+                <span className="text-[var(--color-muted)]">Status</span>
                 <span className="text-green-400 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   ONLINE

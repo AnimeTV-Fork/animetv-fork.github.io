@@ -34,15 +34,17 @@ export const Faq: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-[#0d0717] relative overflow-hidden border-b border-white/5">
+    <section className="section-padding relative overflow-hidden" style={{ background: 'var(--color-bg-end)' }}>
+      <div className="section-divider absolute top-0 left-0 right-0" />
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         
         {/* Title */}
         <div className="text-center mb-16">
+          <span className="badge-glow mb-4 inline-flex">FAQ</span>
           <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">
-            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow">Questions</span>
+            Frequently Asked <span className="gradient-text">Questions</span>
           </h2>
-          <p className="text-muted text-lg max-w-2xl mx-auto">
+          <p className="text-[var(--color-muted)] text-lg max-w-2xl mx-auto">
             Everything you need to know about the client configuration.
           </p>
         </div>
@@ -54,7 +56,7 @@ export const Faq: React.FC = () => {
             return (
               <div 
                 key={index}
-                className="glass-panel rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10"
+                className="glass-card overflow-hidden"
               >
                 <button
                   onClick={() => toggleFaq(index)}
@@ -75,7 +77,7 @@ export const Faq: React.FC = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-6 pb-6 pt-2 text-muted text-sm leading-relaxed border-t border-white/5">
+                      <div className="px-6 pb-6 pt-2 text-[var(--color-muted)] text-sm leading-relaxed border-t border-white/5">
                         {faq.answer}
                       </div>
                     </motion.div>

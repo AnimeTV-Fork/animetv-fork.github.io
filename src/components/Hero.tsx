@@ -98,10 +98,11 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 lg:py-32 px-4 md:px-8 overflow-hidden bg-gradient-to-b from-[#0a0612] to-black">
-      {/* Background radial glow */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full filter blur-[120px] -z-10 pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary-glow/10 rounded-full filter blur-[120px] -z-10 pointer-events-none" />
+    <section className="relative min-h-screen flex items-center justify-center py-20 lg:py-32 px-4 md:px-8 overflow-hidden" style={{ background: `linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end))` }}>
+      {/* Ambient orbs */}
+      <div className="ambient-orb w-[600px] h-[600px] bg-[var(--color-primary)] top-[10%] left-[15%]" />
+      <div className="ambient-orb w-[500px] h-[500px] bg-[var(--color-primary-glow)] bottom-[15%] right-[10%]" style={{ animationDelay: '-7s' }} />
+      <div className="ambient-orb w-[300px] h-[300px] bg-[var(--color-secondary)] top-[60%] left-[50%]" style={{ animationDelay: '-13s', opacity: 0.08 }} />
 
       {/* Subtle Background Poster grid */}
       <div className="absolute inset-0 -z-20 grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 gap-3 p-6 opacity-[0.08] select-none pointer-events-none filter blur-[1.5px]">
@@ -128,26 +129,24 @@ export const Hero: React.FC = () => {
         {/* Left: Content */}
         <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Logo */}
-          <div ref={logoRef} className="mb-6 opacity-0 flex items-center gap-3">
+          <div ref={logoRef} className="mb-6 opacity-0 flex items-center">
             <img
-              src="/assets/ic_launcher-playstore.png"
+              src="/assets/logo.svg"
               alt="AnimeTV"
-              className="w-12 h-12 md:w-16 md:h-16 rounded-2xl filter drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+              className="h-20 md:h-26 w-auto filter drop-shadow-[0_0_20px_var(--color-primary)]"
             />
-            <span className="text-2xl md:text-3xl font-black tracking-tight text-white glow-text">
-              Anime<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow">TV</span>
-            </span>
           </div>
 
           {/* Headline */}
           <h1
             ref={headlineRef}
-            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6 leading-[1.0] opacity-0"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.04em] uppercase mb-6 leading-[0.95] opacity-0"
           >
             Free Anime.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow">
+            <span className="gradient-text">
               No Ads.
             </span>{' '}
+            <br className="hidden sm:block" />
             Native TV Feel.
           </h1>
 
@@ -156,8 +155,8 @@ export const Hero: React.FC = () => {
             ref={subheadRef}
             className="text-base sm:text-lg text-muted mb-10 leading-relaxed max-w-xl opacity-0"
           >
-            A Netflix-style 10-foot streaming experience for Android, Android TV, and Windows.
-            Multi-source scraping, AniList sync, D-pad navigation — no ads, fully open source.
+            A high-performance media aggregator for Android, Android TV, and Windows.
+            Aggregates content with native D-pad navigation, tracking sync, DNS-over-HTTPS, and zero ads.
           </p>
 
           {/* CTAs */}
@@ -165,10 +164,7 @@ export const Hero: React.FC = () => {
             ref={ctaRef}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start items-center opacity-0"
           >
-            <a
-              href="#download"
-              className="px-8 py-4 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-xl transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(168,85,247,0.35)] flex items-center gap-2.5 w-full sm:w-auto justify-center"
-            >
+            <a href="#download" className="btn-magnetic btn-primary shine-sweep">
               <Icon icon="mdi:download" className="text-xl" />
               Get AnimeTV
             </a>
@@ -176,7 +172,7 @@ export const Hero: React.FC = () => {
               href="https://github.com/AnimeTV-Fork/AnimeTV"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-xl transition-transform hover:scale-105 active:scale-95 flex items-center gap-2.5 w-full sm:w-auto justify-center"
+              className="btn-magnetic btn-secondary"
             >
               <Icon icon="mdi:github" className="text-xl" />
               Source Code
@@ -221,9 +217,11 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center justify-center gap-1.5 text-muted/60 animate-bounce pointer-events-none z-20">
-        <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Scroll</span>
-        <Icon icon="mdi:chevron-down" className="text-lg text-primary/60" />
+      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center justify-center gap-2 pointer-events-none z-20">
+        <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[var(--color-muted)]" style={{ opacity: 0.5 }}>Scroll</span>
+        <div className="w-5 h-8 rounded-full border border-[var(--color-muted)]/30 flex items-start justify-center p-1.5">
+          <div className="w-1 h-2 rounded-full bg-[var(--color-primary)] animate-bounce" />
+        </div>
       </div>
     </section>
   );

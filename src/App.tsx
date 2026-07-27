@@ -86,15 +86,15 @@ function App() {
       </main>
 
       {/* Download CTA Banner */}
-      <section id="download" className="relative z-10 py-20 px-4 bg-gradient-to-b from-[#0a0612] to-black overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[600px] h-[600px] bg-primary/10 rounded-full filter blur-[120px]" />
-        </div>
+      <section id="download" className="relative z-10 py-24 px-4 overflow-hidden" style={{ background: 'linear-gradient(to bottom, var(--color-bg-start), #000)' }}>
+        <div className="section-divider absolute top-0 left-0 right-0" />
+        <div className="ambient-orb w-[600px] h-[600px] bg-[var(--color-primary)] top-[30%] left-[50%] -translate-x-1/2" style={{ opacity: 0.08 }} />
         <div className="max-w-4xl mx-auto text-center relative z-10">
+          <span className="badge-glow mb-4 inline-flex">Download</span>
           <h2 className="text-3xl md:text-5xl font-black uppercase mb-4 tracking-tight">
-            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow">Stream?</span>
+            Ready to <span className="gradient-text">Stream?</span>
           </h2>
-          <p className="text-muted text-lg mb-10 max-w-xl mx-auto">
+          <p className="text-[var(--color-muted)] text-lg mb-10 max-w-xl mx-auto">
             Grab AnimeTV for your platform. Free, open source, no account required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -102,7 +102,7 @@ function App() {
               href="https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform shadow-[0_0_30px_rgba(168,85,247,0.3)] flex items-center gap-3"
+              className="btn-magnetic btn-primary shine-sweep text-base px-8 py-4"
             >
               <Icon icon="mdi:android" className="text-2xl" />
               Android / TV APK
@@ -111,7 +111,7 @@ function App() {
               href="https://github.com/AnimeTV-Fork/AnimeTV/releases"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform border border-white/15 flex items-center gap-3"
+              className="btn-magnetic btn-secondary text-base px-8 py-4"
             >
               <Icon icon="mdi:microsoft-windows" className="text-2xl" />
               Windows Releases
@@ -120,7 +120,7 @@ function App() {
               href="https://github.com/AnimeTV-Fork/AnimeTV"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform border border-white/15 flex items-center gap-3"
+              className="btn-magnetic btn-secondary text-base px-8 py-4"
             >
               <Icon icon="mdi:github" className="text-2xl" />
               Source Code
@@ -130,11 +130,10 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/5 py-10 px-4 bg-black">
+      <footer className="relative z-10 border-t border-white/5 py-10 px-4" style={{ background: 'var(--color-bg-start)' }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-3">
-            <img src="/assets/ic_launcher-playstore.png" alt="AnimeTV Logo" className="w-8 h-8 filter drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
-            <span className="font-black tracking-tight text-lg">AnimeTV</span>
+          <div className="flex items-center">
+            <img src="/assets/logo.svg" alt="AnimeTV Logo" className="h-10 w-auto filter drop-shadow-[0_0_10px_var(--color-primary)]" />
           </div>
 
           <p className="text-muted text-xs text-center font-mono uppercase tracking-wider">

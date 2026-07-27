@@ -18,7 +18,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, cla
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -5 }}
-      className={`glass-panel p-6 rounded-2xl relative overflow-hidden group transition-all duration-300 hover:border-primary/45 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] flex flex-col justify-between ${className}`}
+      className={`glass-panel p-6 rounded-2xl relative overflow-hidden group transition-all duration-300 hover:border-[var(--color-primary)]/40 hover:shadow-[0_0_30px_var(--glass-glow-shadow)] flex flex-col justify-between dpad-ring ${className}`}
     >
       {/* Background glow overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -39,23 +39,27 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, cla
 export const BentoGrid: React.FC = () => {
   return (
     <section className="py-24 px-4 max-w-7xl mx-auto relative">
+      {/* Ambient orb */}
+      <div className="ambient-orb w-[500px] h-[500px] bg-[var(--color-primary)] top-[20%] right-[-10%]" style={{ opacity: 0.06 }} />
+      
       <div className="text-center mb-16">
+        <span className="badge-glow mb-4 inline-flex">Features</span>
         <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase mb-4">
-          Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-glow">Power Users</span>
+          Built for <span className="gradient-text">Power Users</span>
         </h2>
-        <p className="text-muted text-lg max-w-2xl mx-auto">
-          No trackers, no redirects, no malware. Just pure native features engineered for the ultimate streaming workspace.
+        <p className="text-[var(--color-muted)] text-lg max-w-2xl mx-auto">
+          No trackers, no redirects, no malware. Pure native features engineered for the ultimate streaming workspace.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        {/* Card 1: Multi-source Scraping (Large) */}
+        {/* Card 1: Multi-source Scraping (Large) — featured card with animated border */}
         <FeatureCard
           title="Headless Scraping & Mirror Bypass"
-          description="Directly resolves and decodes video URLs (HLS .m3u8, MP4) from Miruro, Anikoto, Animepahe, and AnimeFlix using background sandboxed page parsing. Auto refresh-rate matching makes sure video frames match display Hz perfectly."
+          description="Directly resolves and decodes video URLs (HLS .m3u8, MP4) from Miruro, Anikoto, Animepahe, and AnimeFlix using background sandboxed page parsing. Auto refresh-rate matching matches video frames to display Hz."
           icon="mdi:database-search-outline"
-          className="md:col-span-2"
+          className="md:col-span-2 gradient-border shine-sweep"
         >
           {/* Micro animation: active scraper status simulator */}
           <div className="flex flex-col gap-2 p-4 bg-black/40 rounded-xl border border-white/5 font-mono text-xs text-primary-glow">
