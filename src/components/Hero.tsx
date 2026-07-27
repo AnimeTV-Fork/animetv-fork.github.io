@@ -3,6 +3,16 @@ import anime from 'animejs';
 import SplitType from 'split-type';
 import { Icon } from '@iconify/react';
 
+const ANIME_POSTERS = [
+  "/assets/Attack_On_Titan.jpg",
+  "/assets/Black_Clover_Season_2.jpg",
+  "/assets/Demon_Slayer.jpg",
+  "/assets/Jujutsu_Kaisen.jpg",
+  "/assets/Mushoku_Tensei.jpg",
+  "/assets/My_Hero_Academia.jpg",
+  "/assets/One_Piece.jpg"
+];
+
 export const Hero: React.FC = () => {
   const logoRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -94,16 +104,21 @@ export const Hero: React.FC = () => {
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary-glow/10 rounded-full filter blur-[120px] -z-10 pointer-events-none" />
 
       {/* Subtle Background Poster grid */}
-      <div className="absolute inset-0 -z-20 grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 gap-3 p-6 opacity-[0.04] select-none pointer-events-none filter blur-[1px]">
+      <div className="absolute inset-0 -z-20 grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 gap-3 p-6 opacity-[0.08] select-none pointer-events-none filter blur-[1.5px]">
         {Array.from({ length: 36 }).map((_, i) => {
-          const hues = [260, 270, 280, 290, 300, 250, 240, 310];
-          const hue = hues[i % hues.length];
+          const poster = ANIME_POSTERS[i % ANIME_POSTERS.length];
           return (
             <div
               key={i}
-              className="aspect-[2/3] rounded-md"
-              style={{ background: `linear-gradient(145deg, hsl(${hue}, 50%, 18%) 0%, hsl(${hue + 20}, 40%, 6%) 100%)` }}
-            />
+              className="aspect-[2/3] rounded-md overflow-hidden relative bg-black/40"
+            >
+              <img
+                src={poster}
+                alt=""
+                className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-primary-glow/10 mix-blend-color-burn" />
+            </div>
           );
         })}
       </div>

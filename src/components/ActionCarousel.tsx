@@ -16,6 +16,16 @@ interface MockItem {
   image: string;
 }
 
+const ANIME_POSTERS = [
+  "/assets/Attack_On_Titan.jpg",
+  "/assets/Black_Clover_Season_2.jpg",
+  "/assets/Demon_Slayer.jpg",
+  "/assets/Jujutsu_Kaisen.jpg",
+  "/assets/Mushoku_Tensei.jpg",
+  "/assets/My_Hero_Academia.jpg",
+  "/assets/One_Piece.jpg"
+];
+
 const CAROUSEL_ITEMS: MockItem[] = [
   { id: 1, title: "Main Dashboard", category: "Netflix-style 10-foot UI", image: "/assets/Home_Page.png" },
   { id: 2, title: "Browsing & Rails", category: "Trending Recommendations", image: "/assets/Home_Lists.png" },
@@ -141,6 +151,61 @@ export const ActionCarousel: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Horizontal Poster Rail (Netflix Style) */}
+        <div className="mt-20">
+          <div className="flex items-center justify-between mb-6">
+            <span className="text-sm font-bold uppercase tracking-wider text-muted font-mono flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              Trending on AnimeTV
+            </span>
+            <span className="text-xs text-muted/60">Direct Extraction Scraped</span>
+          </div>
+
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={16}
+            slidesPerView={'auto'}
+            grabCursor={true}
+            loop={true}
+            breakpoints={{
+              320: { slidesPerView: 2.2 },
+              480: { slidesPerView: 3.2 },
+              768: { slidesPerView: 4.5 },
+              1024: { slidesPerView: 6 }
+            }}
+            className="pb-4"
+          >
+            {ANIME_POSTERS.map((poster, index) => {
+              const titles = [
+                "Attack on Titan",
+                "Black Clover",
+                "Demon Slayer",
+                "Jujutsu Kaisen",
+                "Mushoku Tensei",
+                "My Hero Academia",
+                "One Piece"
+              ];
+              const title = titles[index % titles.length];
+              return (
+                <SwiperSlide key={index} className="max-w-[160px]">
+                  <div className="relative group rounded-lg overflow-hidden aspect-[2/3] bg-black border border-white/5 transition-all duration-300 hover:scale-105 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+                    <img
+                      src={poster}
+                      alt={title}
+                      className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">
+                      <span className="text-[10px] font-mono text-primary-glow font-bold uppercase">Sub | Dub</span>
+                      <h5 className="text-xs font-bold text-white leading-tight line-clamp-2">{title}</h5>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+
       </div>
     </section>
   );
