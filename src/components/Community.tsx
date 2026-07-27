@@ -34,7 +34,7 @@ export const Community: React.FC = () => {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <a
-                href="https://github.com/AnimeTV-Fork/website"
+                href="https://github.com/AnimeTV-Fork/AnimeTV"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-lg transition-transform hover:scale-105 active:scale-95 flex items-center gap-2"

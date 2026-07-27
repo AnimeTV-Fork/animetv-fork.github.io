@@ -64,15 +64,30 @@ function App() {
             Grab AnimeTV for your platform. Free, open source, no account required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="#download-android" className="px-8 py-4 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform shadow-[0_0_30px_rgba(168,85,247,0.3)] flex items-center gap-3">
+            <a 
+              href="https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-4 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform shadow-[0_0_30px_rgba(168,85,247,0.3)] flex items-center gap-3"
+            >
               <Icon icon="mdi:android" className="text-2xl" />
-              Android / TV
+              Android / TV APK
             </a>
-            <a href="#download-windows" className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform border border-white/15 flex items-center gap-3">
+            <a 
+              href="https://github.com/AnimeTV-Fork/AnimeTV/releases" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform border border-white/15 flex items-center gap-3"
+            >
               <Icon icon="mdi:microsoft-windows" className="text-2xl" />
-              Windows
+              Windows Releases
             </a>
-            <a href="https://github.com/AmarullzDev/AnimeTV" target="_blank" rel="noopener noreferrer" className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform border border-white/15 flex items-center gap-3">
+            <a 
+              href="https://github.com/AnimeTV-Fork/AnimeTV" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform border border-white/15 flex items-center gap-3"
+            >
               <Icon icon="mdi:github" className="text-2xl" />
               Source Code
             </a>
@@ -93,7 +108,7 @@ function App() {
           </p>
 
           <div className="flex gap-5 text-sm">
-            <a href="https://github.com/AmarullzDev/AnimeTV" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5">
+            <a href="https://github.com/AnimeTV-Fork/AnimeTV" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5">
               <Icon icon="mdi:github" className="text-base" />
               GitHub
             </a>

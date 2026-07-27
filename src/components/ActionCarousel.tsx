@@ -17,12 +17,12 @@ interface MockItem {
 }
 
 const CAROUSEL_ITEMS: MockItem[] = [
-  { id: 1, title: "Frieren: Beyond Journey's End", category: "Fantasy • Adventure", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400&auto=format&fit=crop" },
-  { id: 2, title: "Demon Slayer: Hashira Training", category: "Action • Fantasy", image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=400&auto=format&fit=crop" },
-  { id: 3, title: "Kaiju No. 8", category: "Sci-Fi • Action", image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=400&auto=format&fit=crop" },
-  { id: 4, title: "Solo Leveling", category: "Action • Fantasy", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop" },
-  { id: 5, title: "Jujutsu Kaisen", category: "Dark Fantasy • Action", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" },
-  { id: 6, title: "Chainsaw Man", category: "Dark Fantasy • Gore", image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=400&auto=format&fit=crop" }
+  { id: 1, title: "Main Dashboard", category: "Netflix-style 10-foot UI", image: "/assets/Home_Page.png" },
+  { id: 2, title: "Browsing & Rails", category: "Trending Recommendations", image: "/assets/Home_Lists.png" },
+  { id: 3, title: "Headless Scraper Selectors", category: "Independent Multi-Sources", image: "/assets/Source_Selector.png" },
+  { id: 4, title: "AniList & MAL Tracking", category: "Watchlist OAuth Sync", image: "/assets/My_List.png" },
+  { id: 5, title: "Weekly Releases", category: "Airing Schedule", image: "/assets/Airing_Schedule.png" },
+  { id: 6, title: "DNS-over-HTTPS Settings", category: "Bypass Filters & Bans", image: "/assets/Settings_Top.png" }
 ];
 
 export const ActionCarousel: React.FC = () => {
@@ -80,9 +80,9 @@ export const ActionCarousel: React.FC = () => {
               centeredSlides={true}
               slidesPerView={'auto'}
               coverflowEffect={{
-                rotate: 15,
+                rotate: 10,
                 stretch: 0,
-                depth: 100,
+                depth: 80,
                 modifier: 1,
                 slideShadows: false,
               }}
@@ -90,17 +90,17 @@ export const ActionCarousel: React.FC = () => {
               navigation={true}
               pagination={{ clickable: true }}
               breakpoints={{
-                320: { slidesPerView: 1.5, spaceBetween: 20 },
-                640: { slidesPerView: 2.5, spaceBetween: 30 },
-                1024: { slidesPerView: 3.5, spaceBetween: 40 }
+                320: { slidesPerView: 1.1, spaceBetween: 16 },
+                640: { slidesPerView: 1.4, spaceBetween: 24 },
+                1024: { slidesPerView: 1.6, spaceBetween: 32 }
               }}
               className="py-10"
             >
               {CAROUSEL_ITEMS.map((item, idx) => {
                 const isFocused = idx === focusedIndex;
                 return (
-                  <SwiperSlide key={item.id} className="max-w-[240px]">
-                    <div className="relative group rounded-xl overflow-hidden aspect-[2/3] bg-cover bg-center transition-all duration-300">
+                  <SwiperSlide key={item.id} className="max-w-[480px]">
+                    <div className="relative group rounded-xl overflow-hidden aspect-video bg-cover bg-center transition-all duration-300">
                       
                       {/* Image */}
                       <img 

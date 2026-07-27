@@ -2,10 +2,10 @@
 
 ## Assumptions Made
 
-1. **No real download URLs yet** — download buttons use placeholder `#download-android` / `#download-windows` hrefs. Swap these for actual APK/release URLs when available.
-2. **GitHub repo URL** — used `https://github.com/AmarullzDev/AnimeTV` as the upstream repo link. Update if the canonical fork URL differs.
+1. **Real Download URLs** — download buttons link to `https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk` (Android/TV) and `https://github.com/AnimeTV-Fork/AnimeTV/releases` (Windows).
+2. **GitHub repo URL** — canonical fork URL `https://github.com/AnimeTV-Fork/AnimeTV` is configured for the repository and source links.
 3. **No Discord link found** — omitted Discord from footer. Add when available.
-4. **Poster images** — the "See it in Action" carousel and poster wall use placeholder gradient cards since no real anime poster assets were provided. Replace with actual screenshots/posters.
+4. **Real screenshots** — The Hero screen, PlatformShowcase, and "See it in Action" D-pad Carousel use real 16:9 screenshots of the AnimeTV application, copied to `/public/assets/`.
 5. **Logo used as-is** — `ic_launcher-playstore.png` rendered without recoloring; purple glow applied around it via CSS `drop-shadow` and radial gradients.
 6. **AniList OAuth / MAL / Trakt logos** — represented via Iconify glyphs (`simple-icons` set) rather than official brand SVGs. Swap for official assets if licensing permits.
 7. **GitHub stats** — star/contributor counts are hardcoded placeholders. Wire up GitHub API or use a build-time fetch to pull real numbers.

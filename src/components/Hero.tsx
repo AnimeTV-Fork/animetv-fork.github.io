@@ -158,7 +158,7 @@ export const Hero: React.FC = () => {
               Get AnimeTV
             </a>
             <a
-              href="https://github.com/AmarullzDev/AnimeTV"
+              href="https://github.com/AnimeTV-Fork/AnimeTV"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 glass-panel hover:bg-white/10 text-white font-bold rounded-xl transition-transform hover:scale-105 active:scale-95 flex items-center gap-2.5 w-full sm:w-auto justify-center"
@@ -189,7 +189,7 @@ export const Hero: React.FC = () => {
               
               {/* Actual Image */}
               <img
-                src="/assets/app-screenshot.png"
+                src="/assets/Home_Page.png"
                 alt="AnimeTV App Dashboard"
                 className="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700"
               />

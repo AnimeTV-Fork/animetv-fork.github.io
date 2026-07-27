@@ -13,6 +13,7 @@ interface Platform {
   features: string[];
   specs: string;
   screenshot: string;
+  downloadUrl: string;
 }
 
 const PLATFORMS: Platform[] = [
@@ -29,7 +30,8 @@ const PLATFORMS: Platform[] = [
       'MediaSession background media controls'
     ],
     specs: 'Android 5.0+ (API 21) • FireOS 5+',
-    screenshot: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=600&auto=format&fit=crop'
+    screenshot: '/assets/Home_Lists.png',
+    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk'
   },
   {
     id: 'android-mobile',
@@ -44,7 +46,8 @@ const PLATFORMS: Platform[] = [
       'Picture-in-Picture scaling controls'
     ],
     specs: 'Android 6.0+ (ARM64 & x86)',
-    screenshot: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop'
+    screenshot: '/assets/Source_Selector.png',
+    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk'
   },
   {
     id: 'windows-desktop',
@@ -59,7 +62,8 @@ const PLATFORMS: Platform[] = [
       'Automatic self-updating application client'
     ],
     specs: 'Windows 10 / 11 (64-bit Edition)',
-    screenshot: 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?q=80&w=600&auto=format&fit=crop'
+    screenshot: '/assets/Settings_Top.png',
+    downloadUrl: 'https://github.com/AnimeTV-Fork/AnimeTV/releases'
   }
 ];
 
@@ -170,10 +174,15 @@ export const PlatformShowcase: React.FC = () => {
                 </ul>
 
                 <div className="pt-6">
-                  <button className="px-6 py-3 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] flex items-center gap-2">
+                  <a 
+                    href={platform.downloadUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex px-6 py-3 bg-gradient-to-r from-primary to-primary-glow text-white font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] items-center gap-2"
+                  >
                     <Icon icon="mdi:download" />
                     Download client
-                  </button>
+                  </a>
                 </div>
               </div>
 
