@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import Lenis from 'lenis';
 import { ParticleBackground } from './components/ParticleBackground';

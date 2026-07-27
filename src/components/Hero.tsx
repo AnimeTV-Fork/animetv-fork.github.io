@@ -8,6 +8,7 @@ export const Hero: React.FC = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const screenshotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // 1. Logo fade + scale in
@@ -58,18 +59,67 @@ export const Hero: React.FC = () => {
         delay: 1100,
       });
     }
+
+    // 5. Screenshot reveal + float animation loop
+    if (screenshotRef.current) {
+      anime({
+        targets: screenshotRef.current,
+        translateY: [120, 0],
+        opacity: [0, 0.35],
+        scale: [0.95, 1],
+        easing: 'cubicBezier(0.16, 1, 0.3, 1)',
+        duration: 1600,
+        delay: 700,
+        complete: () => {
+          // Infinite floating micro-animation
+          anime({
+            targets: screenshotRef.current,
+            translateY: [-12, 12],
+            rotateX: [13, 17],
+            rotateY: [-8, -12],
+            duration: 6000,
+            direction: 'alternate',
+            loop: true,
+            easing: 'easeInOutQuad',
+          });
+        },
+      });
+    }
   }, []);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
-      {/* Background: poster wall — subtle purple-tinted grid */}
+      {/* Background: poster wall + main app screenshot */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Gradient overlay to fade poster wall */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0a0612]/60 via-[#0a0612]/80 to-[#0a0612]" />
+        {/* Gradient overlay to fade poster wall & screenshot */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0a0612]/70 via-[#0a0612]/90 to-[#0a0612]" />
         {/* Radial glow center */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/8 rounded-full filter blur-[150px] z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full filter blur-[150px] z-10 pointer-events-none" />
+        
+        {/* Tilted App Interface Screenshot */}
+        <div
+          ref={screenshotRef}
+          className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[130%] max-w-[1300px] aspect-[16/9] opacity-0 z-0 pointer-events-none select-none"
+          style={{
+            transform: 'perspective(1200px) rotateX(15deg) rotateY(-10deg) rotateZ(5deg)',
+            transformStyle: 'preserve-3d',
+          }}
+        >
+          {/* Glass mock container with purple ambient glow */}
+          <div className="w-full h-full rounded-2xl overflow-hidden border border-white/[0.08] shadow-[0_0_80px_rgba(168,85,247,0.2)] relative">
+            <img
+              src="/assets/app-screenshot.png"
+              alt="AnimeTV App Landing Screenshot"
+              className="w-full h-full object-cover filter brightness-[0.6] contrast-[1.1] saturate-[1.35]"
+            />
+            {/* Blend mask to merge screenshot nicely with purple base background */}
+            <div className="absolute inset-0 bg-[#0a0612]/20 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-transparent to-primary-glow/15 mix-blend-overlay" />
+          </div>
+        </div>
+
         {/* Poster grid */}
-        <div className="absolute inset-0 grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 gap-3 p-6 opacity-[0.12] select-none pointer-events-none filter blur-[1px]">
+        <div className="absolute inset-0 grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 gap-3 p-6 opacity-[0.06] select-none pointer-events-none filter blur-[1px]">
           {Array.from({ length: 36 }).map((_, i) => {
             const hues = [260, 270, 280, 290, 300, 250, 240, 310];
             const hue = hues[i % hues.length];
