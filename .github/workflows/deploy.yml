@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages (Main Org Page)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy to Main Org GitHub Pages Repo
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
+          if [ -z "$API_TOKEN_GITHUB" ]; then
+            echo "Error: API_TOKEN_GITHUB is not set. Please create a Personal Access Token (PAT) with repo access and add it as a secret named API_TOKEN_GITHUB."
+            exit 1
+          fi
+          cd dist
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add .nojekyll to bypass GitHub Pages Jekyll processing
+          touch .nojekyll
+          
+          git add -A
+          git commit -m "Deploy to animetv-fork.github.io [skip ci]"
+          git push --force https://$API_TOKEN_GITHUB@github.com/AnimeTV-Fork/animetv-fork.github.io.git main:main
