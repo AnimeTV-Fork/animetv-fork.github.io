@@ -117,7 +117,7 @@ export const Hero: React.FC = () => {
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.04em] uppercase mb-6 leading-[0.95] flex flex-col items-center lg:items-start"
           >
             <span className="block overflow-hidden">
-              {"ANIMETV".split("").map((char, i) => (
+              {"NATIVE UI".split("").map((char, i) => (
                 <span key={i} className="hero-char inline-block opacity-0">
                   {char === " " ? "\u00A0" : char}
                 </span>
