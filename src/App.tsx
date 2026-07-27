@@ -133,7 +133,7 @@ function App() {
       <footer className="relative z-10 border-t border-white/5 py-10 px-4" style={{ background: 'var(--color-bg-start)' }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center">
-            <img src="/assets/logo.svg" alt="AnimeTV Logo" className="h-10 w-auto filter drop-shadow-[0_0_10px_var(--color-primary)]" />
+            <img src="/assets/logo.svg" alt="AnimeTV Logo" className="h-10 md:h-12 w-auto filter drop-shadow-[0_0_10px_var(--color-primary)]" />
           </div>
 
           <p className="text-muted text-xs text-center font-mono uppercase tracking-wider">

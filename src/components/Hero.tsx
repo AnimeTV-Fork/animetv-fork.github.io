@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
-import SplitType from 'split-type';
 import { Icon } from '@iconify/react';
 
 const ANIME_POSTERS = [
@@ -14,37 +13,21 @@ const ANIME_POSTERS = [
 ];
 
 export const Hero: React.FC = () => {
-  const logoRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const screenshotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // 1. Logo fade + scale in
-    if (logoRef.current) {
-      anime({
-        targets: logoRef.current,
-        scale: [0.8, 1],
-        opacity: [0, 1],
-        easing: 'cubicBezier(0.16, 1, 0.3, 1)',
-        duration: 1200,
-        delay: 200,
-      });
-    }
-
-    // 2. Headline Split-Type stagger
-    if (headlineRef.current) {
-      const text = new SplitType(headlineRef.current, { types: 'chars,words' });
-      anime({
-        targets: text.chars,
-        translateY: [40, 0],
-        opacity: [0, 1],
-        easing: 'cubicBezier(0.16, 1, 0.3, 1)',
-        duration: 1000,
-        delay: anime.stagger(25, { start: 500 }),
-      });
-    }
+    // 1. Headline stagger
+    anime({
+      targets: '.hero-char',
+      translateY: [40, 0],
+      opacity: [0, 1],
+      easing: 'cubicBezier(0.16, 1, 0.3, 1)',
+      duration: 1000,
+      delay: anime.stagger(15, { start: 200 }),
+    });
 
     // 3. Subhead reveal
     if (subheadRef.current) {
@@ -128,26 +111,25 @@ export const Hero: React.FC = () => {
         
         {/* Left: Content */}
         <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-          {/* Logo */}
-          <div ref={logoRef} className="mb-6 opacity-0 flex items-center">
-            <img
-              src="/assets/logo.svg"
-              alt="AnimeTV"
-              className="h-20 md:h-26 w-auto filter drop-shadow-[0_0_20px_var(--color-primary)]"
-            />
-          </div>
-
           {/* Headline */}
           <h1
             ref={headlineRef}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.04em] uppercase mb-6 leading-[0.95] opacity-0"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.04em] uppercase mb-6 leading-[0.95] flex flex-col items-center lg:items-start"
           >
-            Free Anime.{' '}
-            <span className="gradient-text">
-              No Ads.
-            </span>{' '}
-            <br className="hidden sm:block" />
-            Native TV Feel.
+            <span className="block overflow-hidden">
+              {"ANIMETV".split("").map((char, i) => (
+                <span key={i} className="hero-char inline-block opacity-0">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </span>
+            <span className="block overflow-hidden text-[var(--color-secondary)]">
+              {"NO ADS".split("").map((char, i) => (
+                <span key={i} className="hero-char inline-block opacity-0">
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </span>
           </h1>
 
           {/* Subhead */}

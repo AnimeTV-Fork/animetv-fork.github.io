@@ -34,7 +34,7 @@ export function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#"
@@ -44,7 +44,7 @@ export function Navbar() {
             <img
               src="/assets/logo.svg"
               alt="AnimeTV"
-              className="h-16 md:h-20 w-auto drop-shadow-[0_0_8px_var(--color-primary)] group-hover:scale-105 transition-transform"
+              className="h-10 md:h-12 w-auto drop-shadow-[0_0_8px_var(--color-primary)] group-hover:scale-105 transition-transform"
             />
           </a>
 
@@ -101,7 +101,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-24 z-50 bg-black/90 backdrop-blur-xl border-b border-white/10 md:hidden"
+            className="fixed inset-x-0 top-16 z-50 bg-black/90 backdrop-blur-xl border-b border-white/10 md:hidden"
           >
             <div className="flex flex-col p-4 gap-1">
               {links.map((l) => (
