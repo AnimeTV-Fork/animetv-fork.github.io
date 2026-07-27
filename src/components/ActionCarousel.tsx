@@ -141,7 +141,7 @@ export const ActionCarousel: React.FC = () => {
                       />
 
                       {/* Info Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 flex flex-col justify-end transition-opacity duration-300">
                         <span className="text-[10px] uppercase font-bold text-primary-glow">{item.category}</span>
                         <h4 className="text-sm font-extrabold text-white line-clamp-1">{item.title}</h4>
                       </div>
@@ -216,7 +216,7 @@ export const ActionCarousel: React.FC = () => {
                       alt={title}
                       className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-3 flex flex-col justify-end transition-opacity duration-300">
                       <span className="text-[10px] font-mono text-primary-glow font-bold uppercase">Sub | Dub</span>
                       <h5 className="text-xs font-bold text-white leading-tight line-clamp-2">{title}</h5>
                     </div>
