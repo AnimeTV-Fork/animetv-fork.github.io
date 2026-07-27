@@ -8,16 +8,17 @@ export default {
     extend: {
       colors: {
         background: {
-          start: '#0a0612',
-          end: '#120a1f',
+          start: 'var(--color-bg-start)',
+          end: 'var(--color-bg-end)',
         },
         primary: {
-          DEFAULT: '#a855f7',
-          glow: '#d946ef',
+          DEFAULT: 'var(--color-primary)',
+          glow: 'var(--color-primary-glow)',
         },
-        secondary: '#6366f1',
-        foreground: '#f4f1fa',
-        muted: '#a29bb5',
+        secondary: 'var(--color-secondary)',
+        foreground: 'var(--color-foreground)',
+        muted: 'var(--color-muted)',
+        accent: 'var(--color-accent)',
       },
       fontFamily: {
         sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],

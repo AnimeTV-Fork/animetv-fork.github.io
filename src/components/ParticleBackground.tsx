@@ -12,6 +12,9 @@ const fragment = `
   precision highp float;
   uniform float uTime;
   uniform vec2 uResolution;
+  uniform vec3 uColor1;
+  uniform vec3 uColor2;
+  uniform vec3 uBaseBg;
 
   // Simple noise function
   float noise(in vec2 p) {
@@ -21,7 +24,7 @@ const fragment = `
   void main() {
     vec2 uv = gl_FragCoord.xy / uResolution.xy;
     
-    // Create animated purple gradient blobs
+    // Create animated gradient blobs
     vec2 p1 = vec2(0.3 + sin(uTime * 0.2) * 0.1, 0.7 + cos(uTime * 0.15) * 0.1);
     vec2 p2 = vec2(0.7 + cos(uTime * 0.25) * 0.1, 0.3 + sin(uTime * 0.1) * 0.15);
     
@@ -31,10 +34,10 @@ const fragment = `
     float blob1 = smoothstep(0.6, 0.0, d1) * 0.6;
     float blob2 = smoothstep(0.5, 0.0, d2) * 0.5;
     
-    // Purple/violet and indigo colors
-    vec3 color1 = vec3(0.18, 0.05, 0.35) * blob1; // Deep violet
-    vec3 color2 = vec3(0.09, 0.05, 0.22) * blob2; // Electric indigo
-    vec3 baseBg = vec3(0.04, 0.02, 0.07); // Ambient dark violet background
+    // Dynamic themed colors from uniforms
+    vec3 color1 = uColor1 * blob1;
+    vec3 color2 = uColor2 * blob2;
+    vec3 baseBg = uBaseBg;
     
     vec3 finalColor = baseBg + color1 + color2;
     
@@ -47,7 +50,7 @@ const fragment = `
   }
 `;
 
-export const ParticleBackground: React.FC = () => {
+export const ParticleBackground: React.FC<{ theme: string }> = ({ theme }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,12 +65,20 @@ export const ParticleBackground: React.FC = () => {
     // Create a screen-tri to run post-processing fragment shader
     const geometry = new Triangle(gl);
 
+    // Purple theme vs Ocean blue theme colors mapped for WebGL (0.0 to 1.0)
+    const color1Val = theme === 'purple' ? [0.18, 0.05, 0.35] : [0.03, 0.12, 0.25];
+    const color2Val = theme === 'purple' ? [0.09, 0.05, 0.22] : [0.08, 0.28, 0.35];
+    const baseBgVal = theme === 'purple' ? [0.04, 0.02, 0.07] : [0.015, 0.035, 0.078];
+
     const program = new Program(gl, {
       vertex,
       fragment,
       uniforms: {
         uTime: { value: 0 },
         uResolution: { value: [gl.canvas.width, gl.canvas.height] },
+        uColor1: { value: color1Val },
+        uColor2: { value: color2Val },
+        uBaseBg: { value: baseBgVal },
       },
     });
 
@@ -101,7 +112,7 @@ export const ParticleBackground: React.FC = () => {
         gl.canvas.parentNode.removeChild(gl.canvas);
       }
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div 
