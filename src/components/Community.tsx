@@ -42,6 +42,15 @@ export const Community: React.FC = () => {
                 <Icon icon="mdi:github" className="text-xl" />
                 Join the Fork
               </a>
+              <a
+                href="https://discord.gg/ECazA5ZE6f"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-magnetic btn-secondary"
+              >
+                <Icon icon="ic:baseline-discord" className="text-xl" />
+                Join Discord
+              </a>
             </div>
           </div>
 
