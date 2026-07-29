@@ -73,6 +73,15 @@ export function Navbar() {
               GitHub
             </a>
             <a
+              href="https://discord.gg/ECazA5ZE6f"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3.5 py-2 text-sm text-[var(--color-muted)] hover:text-white transition-colors rounded-lg hover:bg-white/5"
+            >
+              <Icon icon="ic:baseline-discord" className="text-base" />
+              Discord
+            </a>
+            <a
               href="https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk"
               target="_blank"
               rel="noopener noreferrer"
@@ -113,6 +122,27 @@ export function Navbar() {
                   {l.label}
                 </button>
               ))}
+              <hr className="border-white/10 my-2" />
+              <div className="flex flex-col gap-1">
+                <a
+                  href="https://github.com/AnimeTV-Fork/AnimeTV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 text-sm text-[var(--color-muted)] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                >
+                  <Icon icon="mdi:github" className="text-lg" />
+                  GitHub
+                </a>
+                <a
+                  href="https://discord.gg/ECazA5ZE6f"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 text-sm text-[var(--color-muted)] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                >
+                  <Icon icon="ic:baseline-discord" className="text-lg" />
+                  Discord
+                </a>
+              </div>
               <hr className="border-white/10 my-2" />
               <a
                 href="https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk"

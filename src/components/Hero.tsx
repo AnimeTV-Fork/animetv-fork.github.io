@@ -159,6 +159,15 @@ export const Hero: React.FC = () => {
               <Icon icon="mdi:github" className="text-xl" />
               Source Code
             </a>
+            <a
+              href="https://discord.gg/ECazA5ZE6f"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-magnetic btn-secondary"
+            >
+              <Icon icon="ic:baseline-discord" className="text-xl" />
+              Discord
+            </a>
           </div>
         </div>
 

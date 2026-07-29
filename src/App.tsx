@@ -125,6 +125,15 @@ function App() {
               <Icon icon="mdi:github" className="text-2xl" />
               Source Code
             </a>
+            <a
+              href="https://discord.gg/ECazA5ZE6f"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-magnetic btn-secondary text-base px-8 py-4"
+            >
+              <Icon icon="ic:baseline-discord" className="text-2xl" />
+              Discord Server
+            </a>
           </div>
         </div>
       </section>
@@ -144,6 +153,10 @@ function App() {
             <a href="https://github.com/AnimeTV-Fork/AnimeTV" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5">
               <Icon icon="mdi:github" className="text-base" />
               GitHub
+            </a>
+            <a href="https://discord.gg/ECazA5ZE6f" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5">
+              <Icon icon="ic:baseline-discord" className="text-base" />
+              Discord
             </a>
             <a href="#download" className="text-primary-glow font-semibold hover:text-white transition-colors">
               Download
