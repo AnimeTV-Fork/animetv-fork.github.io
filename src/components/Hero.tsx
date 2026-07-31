@@ -81,7 +81,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 lg:py-32 px-4 md:px-8 overflow-hidden" style={{ background: `linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end))` }}>
+    <section className="relative min-h-[100dvh] flex items-center justify-center py-16 lg:py-24 px-4 md:px-8 overflow-hidden" style={{ background: `linear-gradient(to bottom, var(--color-bg-start), var(--color-bg-end))` }}>
       {/* Ambient orbs */}
       <div className="ambient-orb w-[600px] h-[600px] bg-[var(--color-primary)] top-[10%] left-[15%]" />
       <div className="ambient-orb w-[500px] h-[500px] bg-[var(--color-primary-glow)] bottom-[15%] right-[10%]" style={{ animationDelay: '-7s' }} />
@@ -108,23 +108,23 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
-        
+
         {/* Left: Content */}
         <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Headline */}
           <h1
             ref={headlineRef}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.04em] uppercase mb-6 leading-[0.95] flex flex-col items-center lg:items-start"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] uppercase mb-6 leading-[0.95] flex flex-col items-center lg:items-start"
           >
             <span className="block overflow-hidden">
-              {"NATIVE UI".split("").map((char, i) => (
+              {"Watch anime.".split("").map((char, i) => (
                 <span key={i} className="hero-char inline-block opacity-0">
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
             </span>
             <span className="block overflow-hidden text-[var(--color-secondary)]">
-              {"NO ADS".split("").map((char, i) => (
+              {"Skip the ads.".split("").map((char, i) => (
                 <span key={i} className="hero-char inline-block opacity-0">
                   {char === " " ? "\u00A0" : char}
                 </span>
@@ -137,8 +137,7 @@ export const Hero: React.FC = () => {
             ref={subheadRef}
             className="text-base sm:text-lg text-muted mb-10 leading-relaxed max-w-xl opacity-0"
           >
-            A high-performance media aggregator for Android, Android TV, and Windows.
-            Aggregates content with native D-pad navigation, tracking sync, DNS-over-HTTPS, and zero ads.
+            Free app for Android, Android TV, Fire TV, and Windows.
           </p>
 
           {/* CTAs */}
@@ -146,27 +145,27 @@ export const Hero: React.FC = () => {
             ref={ctaRef}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start items-center opacity-0"
           >
-            <a href="#download" className="btn-magnetic btn-primary shine-sweep">
+            <a href="#download" className="btn-magnetic btn-primary shine-sweep focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none">
               <Icon icon="mdi:download" className="text-xl" />
-              Get AnimeTV
+              Download for Android
             </a>
             <a
-              href="https://github.com/AnimeTV-Fork/AnimeTV"
+              href="https://github.com/AnimeTV-Fork/AnimeTV/releases"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary"
+              className="btn-magnetic btn-secondary focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             >
-              <Icon icon="mdi:github" className="text-xl" />
-              Source Code
+              <Icon icon="mdi:microsoft-windows" className="text-xl" />
+              Get the Windows app
             </a>
             <a
               href="https://discord.gg/ECazA5ZE6f"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary"
+              className="btn-magnetic btn-secondary focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             >
               <Icon icon="ic:baseline-discord" className="text-xl" />
-              Discord
+              Join Discord
             </a>
           </div>
         </div>
@@ -207,13 +206,6 @@ export const Hero: React.FC = () => {
 
       </div>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center justify-center gap-2 pointer-events-none z-20">
-        <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[var(--color-muted)]" style={{ opacity: 0.5 }}>Scroll</span>
-        <div className="w-5 h-8 rounded-full border border-[var(--color-muted)]/30 flex items-start justify-center p-1.5">
-          <div className="w-1 h-2 rounded-full bg-[var(--color-primary)] animate-bounce" />
-        </div>
-      </div>
     </section>
   );
 };
