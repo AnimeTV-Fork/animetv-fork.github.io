@@ -4,58 +4,122 @@
 
 @layer base {
   :root {
-    /* Teal/Cyan and Orange App Theme */
-    --color-bg-start: #000000;
-    --color-bg-end: #04080c;
-    --color-primary: #0096a6;
-    --color-primary-glow: #00e5ff;
-    --color-secondary: #ffaa3f;
-    --color-foreground: #f0fbfd;
-    --color-muted: #7a9194;
-    --color-accent: #ffaa3f;
-    
-    --scrollbar-track: #000000;
-    --scrollbar-thumb: #005b66;
-    --scrollbar-hover: #0096a6;
-    
-    --glass-bg: rgba(4, 10, 12, 0.65);
-    --glass-border: rgba(0, 150, 166, 0.12);
-    --glass-glow-bg: rgba(0, 150, 166, 0.04);
-    --glass-glow-border: rgba(0, 150, 166, 0.25);
-    --glass-glow-shadow: rgba(0, 150, 166, 0.08);
-    
-    --text-shadow-glow: rgba(0, 150, 166, 0.4);
-    --text-shadow-glow-alt: rgba(255, 170, 63, 0.4);
-    
-    --gradient-brand: linear-gradient(135deg, #0096a6, #00e5ff, #ffaa3f);
-    --gradient-brand-muted: linear-gradient(135deg, rgba(0, 150, 166, 0.15), rgba(255, 170, 63, 0.08));
+    /* DEFAULT: Light Mode (GitHub Inspired) */
+    --color-bg-start: #ffffff;
+    --color-bg-end: #f6f8fa;
+    --color-primary: #0969da;
+    --color-primary-glow: #e6f5ff;
+    --color-secondary: #1a7f37;
+    --color-foreground: #24292f;
+    --color-muted: #57606a;
+    --color-accent: #0969da;
+
+    --scrollbar-track: #f6f8fa;
+    --scrollbar-thumb: #d0d7de;
+    --scrollbar-hover: #afb8c1;
+
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: #d8dee4;
+    --glass-glow-bg: rgba(9, 105, 218, 0.03);
+    --glass-glow-border: #0969da;
+    --glass-glow-shadow: rgba(9, 105, 218, 0.08);
+
+    --text-shadow-glow: rgba(9, 105, 218, 0.15);
+    --text-shadow-glow-alt: rgba(26, 127, 55, 0.15);
+
+    --gradient-brand: linear-gradient(135deg, #0969da, #1a7f37);
+    --gradient-brand-muted: linear-gradient(135deg, rgba(9, 105, 218, 0.1), rgba(26, 127, 55, 0.06));
+
+    --color-btn-primary-text: #ffffff;
   }
 
-  .theme-purple {
-    --color-bg-start: #000000;
-    --color-bg-end: #04080c;
-    --color-primary: #0096a6;
-    --color-primary-glow: #00e5ff;
-    --color-secondary: #ffaa3f;
-    --color-foreground: #f0fbfd;
-    --color-muted: #7a9194;
-    --color-accent: #ffaa3f;
-    
-    --scrollbar-track: #000000;
-    --scrollbar-thumb: #005b66;
-    --scrollbar-hover: #0096a6;
-    
-    --glass-bg: rgba(4, 10, 12, 0.65);
-    --glass-border: rgba(0, 150, 166, 0.12);
-    --glass-glow-bg: rgba(0, 150, 166, 0.04);
-    --glass-glow-border: rgba(0, 150, 166, 0.25);
-    --glass-glow-shadow: rgba(0, 150, 166, 0.08);
-    
-    --text-shadow-glow: rgba(0, 150, 166, 0.4);
-    --text-shadow-glow-alt: rgba(255, 170, 63, 0.4);
-    
-    --gradient-brand: linear-gradient(135deg, #0096a6, #00e5ff, #ffaa3f);
-    --gradient-brand-muted: linear-gradient(135deg, rgba(0, 150, 166, 0.15), rgba(255, 170, 63, 0.08));
+  /* SYSTEM PREFERENCE: Dark Mode automatically loaded without JavaScript */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg-start: #0d1117;
+      --color-bg-end: #161b22;
+      --color-primary: #58a6ff;
+      --color-primary-glow: #1f6feb;
+      --color-secondary: #3fb950;
+      --color-foreground: #c9d1d9;
+      --color-muted: #8b949e;
+      --color-accent: #58a6ff;
+
+      --scrollbar-track: #0d1117;
+      --scrollbar-thumb: #21262d;
+      --scrollbar-hover: #30363d;
+
+      --glass-bg: rgba(22, 27, 34, 0.8);
+      --glass-border: #30363d;
+      --glass-glow-bg: rgba(31, 111, 235, 0.05);
+      --glass-glow-border: #1f6feb;
+      --glass-glow-shadow: rgba(31, 111, 235, 0.12);
+
+      --text-shadow-glow: rgba(88, 166, 255, 0.3);
+      --text-shadow-glow-alt: rgba(63, 185, 80, 0.3);
+
+      --gradient-brand: linear-gradient(135deg, #58a6ff, #3fb950);
+      --gradient-brand-muted: linear-gradient(135deg, rgba(88, 166, 255, 0.15), rgba(63, 185, 80, 0.08));
+
+      --color-btn-primary-text: #0d1117;
+    }
+  }
+
+  /* ROOT CLASS OVERRIDES (Allows manual JavaScript overrides later if desired) */
+  .theme-dark {
+    --color-bg-start: #0d1117;
+    --color-bg-end: #161b22;
+    --color-primary: #58a6ff;
+    --color-primary-glow: #1f6feb;
+    --color-secondary: #3fb950;
+    --color-foreground: #c9d1d9;
+    --color-muted: #8b949e;
+    --color-accent: #58a6ff;
+
+    --scrollbar-track: #0d1117;
+    --scrollbar-thumb: #21262d;
+    --scrollbar-hover: #30363d;
+
+    --glass-bg: rgba(22, 27, 34, 0.8);
+    --glass-border: #30363d;
+    --glass-glow-bg: rgba(31, 111, 235, 0.05);
+    --glass-glow-border: #1f6feb;
+    --glass-glow-shadow: rgba(31, 111, 235, 0.12);
+
+    --text-shadow-glow: rgba(88, 166, 255, 0.3);
+    --text-shadow-glow-alt: rgba(63, 185, 80, 0.3);
+
+    --gradient-brand: linear-gradient(135deg, #58a6ff, #3fb950);
+    --gradient-brand-muted: linear-gradient(135deg, rgba(88, 166, 255, 0.15), rgba(63, 185, 80, 0.08));
+    --color-btn-primary-text: #0d1117;
+  }
+
+  .theme-light {
+    --color-bg-start: #ffffff;
+    --color-bg-end: #f6f8fa;
+    --color-primary: #0969da;
+    --color-primary-glow: #e6f5ff;
+    --color-secondary: #1a7f37;
+    --color-foreground: #24292f;
+    --color-muted: #57606a;
+    --color-accent: #0969da;
+
+    --scrollbar-track: #f6f8fa;
+    --scrollbar-thumb: #d0d7de;
+    --scrollbar-hover: #afb8c1;
+
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: #d8dee4;
+    --glass-glow-bg: rgba(9, 105, 218, 0.03);
+    --glass-glow-border: #0969da;
+    --glass-glow-shadow: rgba(9, 105, 218, 0.08);
+
+    --text-shadow-glow: rgba(9, 105, 218, 0.15);
+    --text-shadow-glow-alt: rgba(26, 127, 55, 0.15);
+
+    --gradient-brand: linear-gradient(135deg, #0969da, #1a7f37);
+    --gradient-brand-muted: linear-gradient(135deg, rgba(9, 105, 218, 0.1), rgba(26, 127, 55, 0.06));
+    --color-btn-primary-text: #ffffff;
   }
 
   html.lenis, html.lenis body { height: auto; }
@@ -82,6 +146,32 @@
   backdrop-filter: blur(20px) saturate(1.3);
   -webkit-backdrop-filter: blur(20px) saturate(1.3);
   border: 1px solid var(--glass-border);
+}
+
+/* ─── SPOTLIGHT CARD BORDERS ─── */
+.spotlight-card {
+  position: relative;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    250px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(168, 85, 247, 0.4),
+    transparent 80%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
 }
 
 .glass-panel-glow {
@@ -255,7 +345,7 @@
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.03em;
-  border-radius: 9999px;
+  border-radius: 8px; /* Redesigned for brand kit: 8px */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   cursor: pointer;
@@ -263,7 +353,7 @@
 }
 .btn-primary {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-glow));
-  color: #fff;
+  color: var(--color-btn-primary-text);
   box-shadow: 0 0 30px var(--glass-glow-shadow), 0 4px 20px rgba(0,0,0,0.3);
 }
 .btn-primary:hover {
