@@ -90,49 +90,39 @@ function App() {
         <div className="section-divider absolute top-0 left-0 right-0" />
         <div className="ambient-orb w-[600px] h-[600px] bg-[var(--color-primary)] top-[30%] left-[50%] -translate-x-1/2" style={{ opacity: 0.08 }} />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <span className="badge-glow mb-4 inline-flex">Download</span>
           <h2 className="text-3xl md:text-5xl font-black uppercase mb-4 tracking-tight">
-            Ready to <span className="gradient-text">Stream?</span>
+            Ready to <span className="gradient-text">watch?</span>
           </h2>
           <p className="text-[var(--color-muted)] text-lg mb-10 max-w-xl mx-auto">
-            Grab AnimeTV for your platform. Free, open source, no account required.
+            Free. No account. No ads. Pick your device.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-primary shine-sweep text-base px-8 py-4"
+              className="btn-magnetic btn-primary shine-sweep text-base px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
             >
               <Icon icon="mdi:android" className="text-2xl" />
-              Android / TV APK
+              Android / TV APK (v5.14.6)
             </a>
             <a
               href="https://github.com/AnimeTV-Fork/AnimeTV/releases"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary text-base px-8 py-4"
+              className="btn-magnetic btn-secondary text-base px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             >
               <Icon icon="mdi:microsoft-windows" className="text-2xl" />
-              Windows Releases
-            </a>
-            <a
-              href="https://github.com/AnimeTV-Fork/AnimeTV"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary text-base px-8 py-4"
-            >
-              <Icon icon="mdi:github" className="text-2xl" />
-              Source Code
+              Windows download
             </a>
             <a
               href="https://discord.gg/ECazA5ZE6f"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary text-base px-8 py-4"
+              className="btn-magnetic btn-secondary text-base px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             >
               <Icon icon="ic:baseline-discord" className="text-2xl" />
-              Discord Server
+              Discord
             </a>
           </div>
         </div>
@@ -142,23 +132,23 @@ function App() {
       <footer className="relative z-10 border-t border-white/5 py-10 px-4" style={{ background: 'var(--color-bg-start)' }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center">
-            <img src="assets/logo.svg" alt="AnimeTV Logo" className="h-10 md:h-12 w-auto filter drop-shadow-[0_0_10px_var(--color-primary)]" />
+            <img src="assets/logo.svg" alt="AnimeTV" className="h-10 md:h-12 w-auto filter drop-shadow-[0_0_10px_var(--color-primary)]" />
           </div>
 
           <p className="text-muted text-xs text-center font-mono uppercase tracking-wider">
-            Open Source GPLv3 • Not affiliated with any content providers
+            Open source under GPLv3. Not affiliated with any streaming site.
           </p>
 
           <div className="flex gap-5 text-sm">
-            <a href="https://github.com/AnimeTV-Fork/AnimeTV" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5">
+            <a href="https://github.com/AnimeTV-Fork/AnimeTV" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none rounded-lg p-1">
               <Icon icon="mdi:github" className="text-base" />
               GitHub
             </a>
-            <a href="https://discord.gg/ECazA5ZE6f" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5">
+            <a href="https://discord.gg/ECazA5ZE6f" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none rounded-lg p-1">
               <Icon icon="ic:baseline-discord" className="text-base" />
               Discord
             </a>
-            <a href="#download" className="text-primary-glow font-semibold hover:text-white transition-colors">
+            <a href="#download" className="text-primary-glow font-semibold hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none rounded-lg p-1">
               Download
             </a>
           </div>

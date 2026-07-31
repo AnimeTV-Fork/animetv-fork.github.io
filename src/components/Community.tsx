@@ -12,23 +12,23 @@ export const Community: React.FC = () => {
           
           {/* Left panel: text details */}
           <div className="space-y-6">
-            <span className="badge-glow">Community Driven</span>
+            <span className="badge-glow">Open source</span>
             <h2 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tight leading-none">
-              Open Source. <br />
-              <span className="gradient-text">No Big Brother.</span>
+              Built by fans. <br />
+              <span className="gradient-text">Owned by you.</span>
             </h2>
             <p className="text-muted text-base md:text-lg leading-relaxed">
-              AnimeTV is actively developed under the GPLv3 license. Originally created by <strong className="text-white">Amarullz</strong>, the codebase is currently maintained by <strong className="text-white">jitendhull</strong>, <strong className="text-white">voltorb</strong>, and <strong className="text-white">tay</strong> with hundreds of community contributors.
+              AnimeTV is free and open source under the GPLv3 license. Anyone can read the code, fix bugs, or suggest a feature. The project started with Amarullz. Today, jitendhull, voltorb, tay, and hundreds of others keep it moving.
             </p>
 
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-3xl font-black text-white glow-text">10k+</span>
+                <span className="text-3xl font-black text-white glow-text">1,500+</span>
                 <p className="text-xs text-muted font-mono uppercase tracking-wider mt-1">GitHub Stars</p>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                 <span className="text-3xl font-black text-white glow-text">500+</span>
-                <p className="text-xs text-muted font-mono uppercase tracking-wider mt-1">Commits/Year</p>
+                <p className="text-xs text-muted font-mono uppercase tracking-wider mt-1">Updates a year</p>
               </div>
             </div>
 
@@ -37,19 +37,19 @@ export const Community: React.FC = () => {
                 href="https://github.com/AnimeTV-Fork/AnimeTV"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-magnetic btn-primary shine-sweep"
+                className="btn-magnetic btn-primary shine-sweep focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
               >
                 <Icon icon="mdi:github" className="text-xl" />
-                Join the Fork
+                Star us on GitHub
               </a>
               <a
                 href="https://discord.gg/ECazA5ZE6f"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-magnetic btn-secondary"
+                className="btn-magnetic btn-secondary focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               >
                 <Icon icon="ic:baseline-discord" className="text-xl" />
-                Join Discord
+                Chat on Discord
               </a>
             </div>
           </div>

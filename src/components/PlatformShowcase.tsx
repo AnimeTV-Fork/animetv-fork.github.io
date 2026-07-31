@@ -11,6 +11,7 @@ interface Platform {
   specs: string;
   screenshot: string;
   downloadUrl: string;
+  ctaText: string;
 }
 
 const PLATFORMS: Platform[] = [
@@ -18,49 +19,52 @@ const PLATFORMS: Platform[] = [
     id: 'android-tv',
     name: 'Android TV & Fire TV',
     icon: 'mdi:television-play',
-    badge: '10-Foot Experience',
+    badge: 'Made for the couch',
     features: [
-      'D-pad native remote navigation support',
-      'System-level Picture-in-Picture (PiP) capability',
-      'ExoPlayer / Jetpack Media3 high-performance engine',
-      'Auto refresh-rate matching (Hz match) for smooth playback',
-      'MediaSession background media controls integration'
+      'Navigate with your TV remote',
+      'Pop out a small player window (PiP)',
+      'Smooth playback on big screens',
+      'Phone call? Playback pauses itself',
+      'Use the media panel on your TV to pause'
     ],
-    specs: 'Android 5.0+ (API 21) • FireOS 5+',
+    specs: 'Works on Android 5.0 and up. FireOS 5 and up.',
     screenshot: 'assets/Home_Lists.png',
-    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk'
+    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk',
+    ctaText: 'Download APK'
   },
   {
     id: 'android-mobile',
-    name: 'Android Mobile',
+    name: 'Android Phone',
     icon: 'mdi:cellphone-play',
-    badge: 'On-the-go Powerhouse',
+    badge: 'Take it with you',
     features: [
-      'Intuitive gesture controls for volume, brightness, and seek',
-      'Audio focus handling to pause playback during phone calls',
-      'Offline watchlist caching & deep synchronization',
-      'Optimized portrait & landscape video player layouts',
-      'Customizable Picture-in-Picture scaling boundaries'
+      'Swipe to change volume, brightness, or skip',
+      'Phone call? Playback pauses itself',
+      'Save your list for offline',
+      'Watch in portrait or landscape',
+      'Resize the pop-out player'
     ],
-    specs: 'Android 6.0+ (ARM64 & x86)',
+    specs: 'Android 6.0 and up.',
     screenshot: 'assets/Source_Selector.png',
-    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk'
+    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk',
+    ctaText: 'Download APK'
   },
   {
     id: 'windows-desktop',
-    name: 'Windows Desktop',
+    name: 'Windows',
     icon: 'mdi:microsoft-windows',
-    badge: 'Electron Standalone',
+    badge: 'Big screen, real keyboard',
     features: [
-      'Headless NodeJS scraper architecture runner',
-      'Game controller and custom keyboard hotkey mapping',
-      'GPU accelerated Chromium media rendering pipeline',
-      'Offline local watch statistics database tracker',
-      'Automatic self-updating application client updater'
+      'Plug in a controller and play',
+      'Set your own keyboard shortcuts',
+      'Smooth video on your GPU',
+      'Track your watch stats offline',
+      'Auto-update when a new version drops'
     ],
-    specs: 'Windows 10 / 11 (64-bit Edition)',
+    specs: 'Windows 10 or 11, 64-bit.',
     screenshot: 'assets/Settings_Top.png',
-    downloadUrl: 'https://github.com/AnimeTV-Fork/AnimeTV/releases'
+    downloadUrl: 'https://github.com/AnimeTV-Fork/AnimeTV/releases',
+    ctaText: 'Download for Windows'
   }
 ];
 
@@ -69,8 +73,8 @@ export const PlatformShowcase: React.FC = () => {
   const current = PLATFORMS[activeTab];
 
   return (
-    <section 
-      id="platforms" 
+    <section
+      id="platforms"
       className="relative py-24 px-4 overflow-hidden"
       style={{ background: 'var(--color-bg-end)' }}
     >
@@ -78,15 +82,15 @@ export const PlatformShowcase: React.FC = () => {
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        
+
         {/* Header */}
         <div className="text-center mb-12">
           <span className="badge-glow mb-4 inline-flex">Platforms</span>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight">
-            Multi-Platform <span className="gradient-text">Ecosystem</span>
+            One app. <span className="gradient-text">Every screen you watch on.</span>
           </h2>
-          <p className="text-[var(--color-muted)] text-sm max-w-md mx-auto mt-2">
-            Tailored native engines optimized for the screen you watch on.
+          <p className="text-[var(--color-muted)] text-base max-w-xl mx-auto mt-2">
+            Pick the device you're on. Same library, same watch progress.
           </p>
         </div>
 
@@ -98,9 +102,9 @@ export const PlatformShowcase: React.FC = () => {
               <button
                 key={platform.id}
                 onClick={() => setActiveTab(idx)}
-                className={`relative flex items-center gap-2 px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-300 ${
-                  isActive 
-                    ? 'border-primary text-white bg-primary/10 shadow-[0_0_15px_rgba(0,150,166,0.15)]' 
+                className={`relative flex items-center gap-2 px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none ${
+                  isActive
+                    ? 'border-primary text-white bg-primary/10 shadow-[0_0_15px_rgba(0,150,166,0.15)]'
                     : 'border-white/5 text-[var(--color-muted)] bg-white/5 hover:border-white/10 hover:text-white'
                 }`}
               >
@@ -146,7 +150,7 @@ export const PlatformShowcase: React.FC = () => {
                 </div>
 
                 <p className="text-xs text-[var(--color-muted)] font-mono tracking-wider uppercase">
-                  REQUIREMENT: {current.specs}
+                  Requirement: {current.specs}
                 </p>
 
                 <ul className="space-y-3.5 pt-2">
@@ -161,14 +165,14 @@ export const PlatformShowcase: React.FC = () => {
                 </ul>
 
                 <div className="pt-6">
-                  <a 
+                  <a
                     href={current.downloadUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-magnetic btn-primary inline-flex items-center gap-2 shine-sweep"
+                    className="btn-magnetic btn-primary inline-flex items-center gap-2 shine-sweep focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
                   >
                     <Icon icon="mdi:download" className="text-lg" />
-                    Download client APK / Executable
+                    {current.ctaText}
                   </a>
                 </div>
               </div>
@@ -178,19 +182,19 @@ export const PlatformShowcase: React.FC = () => {
                 <div className="relative group w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
                   {/* Subtle ambient light back-glow */}
                   <div className="absolute -inset-4 bg-primary/15 rounded-xl filter blur-xl opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   {/* Outer Frame */}
                   <div className="relative h-full w-full bg-[#050b0e] border border-white/10 rounded-xl p-2.5 overflow-hidden">
                     {/* Screen glare reflection */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 pointer-events-none z-20" />
-                    
+
                     {/* Image display */}
-                    <img 
-                      src={current.screenshot} 
+                    <img
+                      src={current.screenshot}
                       alt={current.name}
-                      className="w-full h-full object-cover rounded-lg filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                      className="w-full h-full object-cover rounded-lg filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                     />
-                    
+
                     {/* TV Remote Focus Box corner indicator simulation */}
                     <div className="absolute inset-4 border border-primary-glow/60 rounded pointer-events-none group-hover:scale-[0.98] transition-transform duration-500">
                       <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary-glow" />
@@ -204,6 +208,11 @@ export const PlatformShowcase: React.FC = () => {
 
             </motion.div>
           </AnimatePresence>
+        </div>
+
+        {/* Not Supported Note */}
+        <div className="mt-8 text-center text-xs text-[var(--color-muted)] font-mono">
+          iPhone, iPad, and Mac. We don't have builds for Apple devices yet.
         </div>
 
       </div>
