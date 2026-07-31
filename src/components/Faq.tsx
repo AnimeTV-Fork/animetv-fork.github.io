@@ -9,20 +9,20 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    question: "Is AnimeTV legal and safe to use?",
-    answer: "AnimeTV is an open-source media player. It does not host, upload, or store any media. It operates as a scraping browser engine that resolves public third-party streams via dynamic layout analysis. We recommend using a VPN or DNS-over-HTTPS (DoH) where applicable."
+    question: "Is it legal and safe?",
+    answer: "Yes. AnimeTV doesn't host, upload, or store any video. It just finds public streams from other sites for you. Use a VPN if your country blocks those sites."
   },
   {
-    question: "How do I sync my AniList or MAL watch progress?",
-    answer: "Go to settings on the application client, choose trackers, and click connect. Authorize using OAuth2. Your watch progress automatically syncs every time an episode matches the database mappings."
+    question: "How do I sync my AniList or MAL?",
+    answer: "Open the app, go to Settings, pick Trackers, and tap Connect. Sign in once. Your progress updates from there."
   },
   {
-    question: "Can I run this on my Android TV box or Firestick?",
-    answer: "Yes, AnimeTV is fully compatible with Android TV, Google TV, and Amazon Fire TV devices. Download the Android APK, transfer it to your TV box using an app like 'Downloader', and install it."
+    question: "Will it run on my TV box or Firestick?",
+    answer: "Yes. Android TV, Google TV, and Fire TV all work. Download the APK with the 'Downloader' app and install it."
   },
   {
-    question: "Does the app support external players or subtitles?",
-    answer: "Yes. AnimeTV embeds ExoPlayer and Media3 with fully adjustable media options, including support for embedded subtitle rendering (WebVTT/SRT), audio track switching, auto refresh-rate matching, and external player options."
+    question: "Can I change subtitles or use a different video player?",
+    answer: "Yes. You can load .SRT or .VTT subtitle files, switch audio tracks, and pick an external player from the settings."
   }
 ];
 
@@ -37,15 +37,14 @@ export const Faq: React.FC = () => {
     <section className="section-padding relative overflow-hidden" style={{ background: 'var(--color-bg-end)' }}>
       <div className="section-divider absolute top-0 left-0 right-0" />
       <div className="max-w-4xl mx-auto px-4 relative z-10">
-        
+
         {/* Title */}
         <div className="text-center mb-16">
-          <span className="badge-glow mb-4 inline-flex">FAQ</span>
           <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">
-            Frequently Asked <span className="gradient-text">Questions</span>
+            Quick <span className="gradient-text">answers.</span>
           </h2>
           <p className="text-[var(--color-muted)] text-lg max-w-2xl mx-auto">
-            Everything you need to know about the client configuration.
+            The stuff people ask before they install.
           </p>
         </div>
 
@@ -53,14 +52,21 @@ export const Faq: React.FC = () => {
         <div className="space-y-4">
           {FAQS.map((faq, index) => {
             const isOpen = activeIndex === index;
+            const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+              e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            };
+
             return (
-              <div 
+              <div
                 key={index}
-                className="glass-card overflow-hidden"
+                onMouseMove={handleMouseMove}
+                className="glass-card overflow-hidden spotlight-card"
               >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-5 flex justify-between items-center text-left text-white font-bold text-lg hover:text-primary-glow transition-colors focus:outline-none"
+                  className="w-full px-6 py-5 flex justify-between items-center text-left text-white font-bold text-lg hover:text-primary-glow transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
                 >
                   <span>{faq.question}</span>
                   <Icon 

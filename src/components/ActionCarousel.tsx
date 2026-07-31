@@ -27,12 +27,12 @@ const ANIME_POSTERS = [
 ];
 
 const CAROUSEL_ITEMS: MockItem[] = [
-  { id: 1, title: "Main Dashboard", category: "10-Foot Media Dashboard", image: "assets/Home_Page.png" },
-  { id: 2, title: "Browsing & Rails", category: "Trending Recommendations", image: "assets/Home_Lists.png" },
-  { id: 3, title: "Headless Scraper Selectors", category: "Independent Multi-Sources", image: "assets/Source_Selector.png" },
-  { id: 4, title: "AniList & MAL Tracking", category: "Watchlist OAuth Sync", image: "assets/My_List.png" },
-  { id: 5, title: "Weekly Releases", category: "Airing Schedule", image: "assets/Airing_Schedule.png" },
-  { id: 6, title: "DNS-over-HTTPS Settings", category: "Bypass Filters & Bans", image: "assets/Settings_Top.png" }
+  { id: 1, title: "Home", category: "Your starting screen", image: "assets/Home_Page.png" },
+  { id: 2, title: "Browse", category: "Trending and new shows", image: "assets/Home_Lists.png" },
+  { id: 3, title: "Sources", category: "Pick where the video streams from", image: "assets/Source_Selector.png" },
+  { id: 4, title: "Watchlist", category: "Your saved shows", image: "assets/My_List.png" },
+  { id: 5, title: "Schedule", category: "What airs this week", image: "assets/Airing_Schedule.png" },
+  { id: 6, title: "Settings", category: "Filters and subtitles", image: "assets/Settings_Top.png" }
 ];
 
 export const ActionCarousel: React.FC = () => {
@@ -75,15 +75,14 @@ export const ActionCarousel: React.FC = () => {
     <section className="section-padding relative overflow-hidden" style={{ background: 'var(--color-bg-start)' }}>
       <div className="section-divider absolute top-0 left-0 right-0" />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        
+
         {/* Title */}
         <div className="text-center mb-16">
-          <span className="badge-glow mb-4 inline-flex">Live Demo</span>
           <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">
-            See it in <span className="gradient-text">Action</span>
+            Press the arrows. <span className="gradient-text">Move around the app.</span>
           </h2>
           <p className="text-[var(--color-muted)] text-lg max-w-2xl mx-auto">
-            Experience the remote control focus-ring mapping engine below. Use your <strong className="text-white">keyboard Left/Right arrows</strong> or click buttons to navigate!
+            Use the left and right arrow keys on your keyboard. It works just like a TV remote.
           </p>
         </div>
 
@@ -91,16 +90,16 @@ export const ActionCarousel: React.FC = () => {
         <div className="relative max-w-4xl mx-auto focus:outline-none">
           {/* Simulated TV Frame */}
           <div className="relative bg-[#11091d] border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl">
-            
+
             {/* TV Statusbar */}
             <div className="flex justify-between items-center mb-6 border-b border-white/5 pb-4 text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping" />
-                <span>ExoPlayer Engine: READY</span>
+                <span>Player: ready</span>
               </div>
               <div className="flex gap-4">
-                <span>DOH: ACTIVE</span>
-                <span>SUB: EN/ES/FR</span>
+                <span>Filters: on</span>
+                <span>Subtitles: all languages</span>
               </div>
             </div>
 
@@ -134,11 +133,11 @@ export const ActionCarousel: React.FC = () => {
                 return (
                   <SwiperSlide key={item.id} className="max-w-[480px]">
                     <div className="relative group rounded-xl overflow-hidden aspect-video bg-cover bg-center transition-all duration-300">
-                      
+
                       {/* Image */}
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
+                      <img
+                        src={item.image}
+                        alt={item.title}
                         className="w-full h-full object-cover rounded-xl"
                       />
 
@@ -150,7 +149,7 @@ export const ActionCarousel: React.FC = () => {
 
                       {/* TV Highlight Bracket / Focus Ring */}
                       {isFocused && (
-                        <motion.div 
+                        <motion.div
                           layoutId="focusRing"
                           className="absolute inset-0 border-4 border-primary-glow rounded-xl z-20 pointer-events-none shadow-[0_0_25px_rgba(217,70,239,0.5)]"
                           transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -167,10 +166,31 @@ export const ActionCarousel: React.FC = () => {
               })}
             </Swiper>
 
+            {/* Interactive Remote D-Pad */}
+            <div className="flex justify-center gap-4 mt-6">
+              <div className="flex items-center gap-3 bg-black/40 rounded-full border border-white/5 p-1.5 px-4 shadow-inner">
+                <button
+                  onClick={() => swiperInstance?.slidePrev()}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/20 text-white flex items-center justify-center transition-all active:scale-90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer"
+                  aria-label="Previous slide"
+                >
+                  <Icon icon="mdi:chevron-left" className="text-xl" />
+                </button>
+                <span className="text-[10px] text-muted font-mono uppercase tracking-wider select-none">App Remote</span>
+                <button
+                  onClick={() => swiperInstance?.slideNext()}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/20 text-white flex items-center justify-center transition-all active:scale-90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer"
+                  aria-label="Next slide"
+                >
+                  <Icon icon="mdi:chevron-right" className="text-xl" />
+                </button>
+              </div>
+            </div>
+
             {/* Keyboard Focus Help Cue */}
-            <div className="flex justify-center items-center gap-2 mt-6 text-xs text-[var(--color-muted)] font-mono uppercase">
-              <Icon icon="mdi:keyboard" className="text-lg" />
-              <span>Simulating D-Pad input. Press Left/Right Arrows on keyboard.</span>
+            <div className="flex justify-center items-center gap-2 mt-4 text-[10px] text-[var(--color-muted)] font-mono uppercase">
+              <Icon icon="mdi:keyboard" className="text-base" />
+              <span>Tip: arrow keys move the focus. Press Enter to open.</span>
             </div>
           </div>
         </div>
@@ -180,9 +200,9 @@ export const ActionCarousel: React.FC = () => {
           <div className="flex items-center justify-between mb-6">
             <span className="text-sm font-bold uppercase tracking-wider text-[var(--color-muted)] font-mono flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Trending on AnimeTV
+              Trending right now
             </span>
-            <span className="text-xs text-[var(--color-muted)] opacity-60">Direct Extraction Scraped</span>
+            <span className="text-xs text-[var(--color-muted)] opacity-60">Updated every day</span>
           </div>
 
           <Swiper
