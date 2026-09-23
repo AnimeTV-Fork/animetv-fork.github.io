@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface DownloadOption {
+  label: string;
+  url: string;
+}
+
 interface Platform {
   id: string;
   name: string;
@@ -10,8 +15,7 @@ interface Platform {
   features: string[];
   specs: string;
   screenshot: string;
-  downloadUrl: string;
-  ctaText: string;
+  downloads: DownloadOption[];
 }
 
 const PLATFORMS: Platform[] = [
@@ -29,8 +33,9 @@ const PLATFORMS: Platform[] = [
     ],
     specs: 'Works on Android 5.0 and up. FireOS 5 and up.',
     screenshot: 'assets/Home_Lists.png',
-    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk',
-    ctaText: 'Download APK'
+    downloads: [
+      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk' }
+    ]
   },
   {
     id: 'android-mobile',
@@ -46,8 +51,9 @@ const PLATFORMS: Platform[] = [
     ],
     specs: 'Android 6.0 and up.',
     screenshot: 'assets/Source_Selector.png',
-    downloadUrl: 'https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk',
-    ctaText: 'Download APK'
+    downloads: [
+      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk' }
+    ]
   },
   {
     id: 'windows-desktop',
@@ -61,10 +67,12 @@ const PLATFORMS: Platform[] = [
       'Track your watch stats offline',
       'Auto-update when a new version drops'
     ],
-    specs: 'Windows 10 or 11, 64-bit.',
+    specs: 'Windows 10 or 11 (x64 / ARM64).',
     screenshot: 'assets/Settings_Top.png',
-    downloadUrl: 'https://github.com/AnimeTV-Fork/AnimeTV/releases',
-    ctaText: 'Download for Windows'
+    downloads: [
+      { label: 'Download x64', url: 'https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0' },
+      { label: 'Download ARM64', url: 'https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0' }
+    ]
   }
 ];
 
@@ -164,16 +172,19 @@ export const PlatformShowcase: React.FC = () => {
                   ))}
                 </ul>
 
-                <div className="pt-6">
-                  <a
-                    href={current.downloadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-magnetic btn-primary inline-flex items-center gap-2 shine-sweep focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
-                  >
-                    <Icon icon="mdi:download" className="text-lg" />
-                    {current.ctaText}
-                  </a>
+                <div className="pt-6 flex flex-wrap gap-3">
+                  {current.downloads.map((dl, i) => (
+                    <a
+                      key={i}
+                      href={dl.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-magnetic btn-primary inline-flex items-center gap-2 shine-sweep focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
+                    >
+                      <Icon icon="mdi:download" className="text-lg" />
+                      {dl.label}
+                    </a>
+                  ))}
                 </div>
               </div>
 

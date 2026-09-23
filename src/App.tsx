@@ -96,33 +96,44 @@ function App() {
           <p className="text-[var(--color-muted)] text-lg mb-10 max-w-xl mx-auto">
             Free. No account. No ads. Pick your device.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center">
             <a
-              href="https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk"
+              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-primary shine-sweep text-base px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
+              className="btn-magnetic btn-primary shine-sweep text-base px-6 sm:px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
             >
               <Icon icon="mdi:android" className="text-2xl" />
-              Android / TV APK (v5.14.6)
+              Android / TV APK (v5.15.0)
             </a>
             <a
-              href="https://github.com/AnimeTV-Fork/AnimeTV/releases"
+              href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary text-base px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+              className="btn-magnetic btn-secondary text-base px-6 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             >
               <Icon icon="mdi:microsoft-windows" className="text-2xl" />
-              Windows download
+              Windows (x64)
             </a>
+            <a
+              href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-magnetic btn-secondary text-base px-6 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+            >
+              <Icon icon="mdi:microsoft-windows" className="text-2xl" />
+              Windows (ARM64)
+            </a>
+          </div>
+          <div className="mt-6 flex justify-center">
             <a
               href="https://discord.gg/ECazA5ZE6f"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary text-base px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+              className="btn-magnetic btn-secondary text-sm px-6 py-3 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             >
-              <Icon icon="ic:baseline-discord" className="text-2xl" />
-              Discord
+              <Icon icon="ic:baseline-discord" className="text-xl" />
+              Join Discord
             </a>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 ## Assumptions Made
 
-1. **Real Download URLs** — download buttons link to `https://github.com/k-nacion/rc-store/releases/download/5.14.6/5.14.6.apk` (Android/TV) and `https://github.com/AnimeTV-Fork/AnimeTV/releases` (Windows).
+1. **Real Download URLs** — download buttons link to `https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk` (Android/TV), `https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe` (Windows x64), and `https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe` (Windows ARM64).
 2. **GitHub repo URL** — canonical fork URL `https://github.com/AnimeTV-Fork/AnimeTV` is configured for the repository and source links.
 3. **No Discord link found** — omitted Discord from footer. Add when available.
 4. **Real screenshots** — The Hero screen, PlatformShowcase, and "See it in Action" D-pad Carousel use real 16:9 screenshots of the AnimeTV application, copied to `/public/assets/`.

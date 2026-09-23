@@ -150,9 +150,7 @@ export const Hero: React.FC = () => {
               Download for Android
             </a>
             <a
-              href="https://github.com/AnimeTV-Fork/AnimeTV/releases"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#download"
               className="btn-magnetic btn-secondary focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             >
               <Icon icon="mdi:microsoft-windows" className="text-xl" />
