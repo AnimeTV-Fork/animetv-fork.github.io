@@ -116,6 +116,9 @@ export const Hero: React.FC = () => {
             ref={headlineRef}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] uppercase mb-6 leading-[0.95] flex flex-col items-center lg:items-start"
           >
+            <span className="text-xs sm:text-sm font-semibold tracking-widest text-primary-glow uppercase mb-3 font-mono">
+              AnimeTV App
+            </span>
             <span className="block overflow-hidden">
               {"Watch anime.".split("").map((char, i) => (
                 <span key={i} className="hero-char inline-block opacity-0">

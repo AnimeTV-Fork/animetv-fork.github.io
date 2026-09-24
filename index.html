@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AnimeTV - Free Anime Streaming App. No Ads.</title>
 
-    <!-- SEO -->
+    <!-- SEO & Indexing -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://animetv-fork.github.io/" />
     <meta name="description" content="Watch anime free on Android, Android TV, Fire TV, and Windows. No ads. No account. Open source." />
     <meta name="keywords" content="anime app, free anime, Android TV, Fire TV, no ads, open source" />
     <meta name="author" content="AnimeTV-Fork" />
@@ -15,7 +17,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="AnimeTV - Free Anime Streaming" />
     <meta property="og:description" content="Free anime app for Android, TV, and Windows. No ads. Open source." />
-    <meta property="og:image" content="/assets/Home_Page.png" />
+    <meta property="og:image" content="https://animetv-fork.github.io/assets/Home_Page.png" />
     <meta property="og:url" content="https://animetv-fork.github.io/" />
     <meta property="og:site_name" content="AnimeTV" />
 
@@ -23,7 +25,46 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="AnimeTV - Free Anime Streaming" />
     <meta name="twitter:description" content="Free anime app for Android, TV, and Windows. No ads. Open source." />
-    <meta name="twitter:image" content="/assets/Home_Page.png" />
+    <meta name="twitter:image" content="https://animetv-fork.github.io/assets/Home_Page.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://animetv-fork.github.io/#website",
+          "url": "https://animetv-fork.github.io/",
+          "name": "AnimeTV",
+          "description": "Free anime streaming app for Android, Android TV, Fire TV, and Windows with no ads.",
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://animetv-fork.github.io/#software",
+          "name": "AnimeTV",
+          "operatingSystem": "Android, Android TV, Fire OS, Windows",
+          "applicationCategory": "EntertainmentApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "Watch anime free on Android, Android TV, Fire TV, and Windows. No ads. No account. Open source.",
+          "url": "https://animetv-fork.github.io/",
+          "image": "https://animetv-fork.github.io/assets/Home_Page.png",
+          "downloadUrl": "https://github.com/AnimeTV-Fork/rc-store/releases/latest",
+          "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+          "author": {
+            "@type": "Organization",
+            "name": "AnimeTV-Fork",
+            "url": "https://github.com/AnimeTV-Fork"
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./favicon.png" />
@@ -35,7 +76,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Righteous&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-[#0a0612] text-[#f4f1fa] antialiased overflow-x-hidden selection:bg-primary selection:text-white font-sans">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static crawlable fallback for search engine bots -->
+      <header>
+        <h1>AnimeTV — Free Anime Streaming App. No Ads.</h1>
+        <p>Watch anime free on Android, Android TV, Fire TV, and Windows. No ads. No account. Open source under GPLv3.</p>
+      </header>
+      <main>
+        <section>
+          <h2>Features</h2>
+          <ul>
+            <li>No Advertisements or Tracking</li>
+            <li>No Account Required</li>
+            <li>Built for Android TV, Fire TV Remote D-pad, and Windows</li>
+            <li>Auto-Next, Auto-Skip Intro/Outro, AniList/MAL Sync</li>
+            <li>1080p &amp; 4K Anime Streams with Multi-Source Scrapers</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Download AnimeTV</h2>
+          <p><a href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk">Download AnimeTV APK for Android, Android TV, and Fire TV (v5.15.0)</a></p>
+          <p><a href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0">Download AnimeTV for Windows (x64)</a></p>
+          <p><a href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0">Download AnimeTV for Windows (ARM64)</a></p>
+        </section>
+      </main>
+    </div>
+    <noscript>
+      <div style="padding: 2rem; max-width: 800px; margin: 0 auto; font-family: sans-serif; color: #fff; background: #0a0612;">
+        <h1>AnimeTV — Free Anime Streaming App. No Ads.</h1>
+        <p>Watch anime free on Android, Android TV, Fire TV, and Windows. Open source, no ads, no account needed.</p>
+        <p><a href="https://github.com/AnimeTV-Fork/rc-store/releases/latest" style="color: #c084fc;">Download Latest Release on GitHub</a></p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

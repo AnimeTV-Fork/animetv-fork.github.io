@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://animetv-fork.github.io/sitemap.xml
