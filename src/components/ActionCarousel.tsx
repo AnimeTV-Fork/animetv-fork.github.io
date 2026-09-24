@@ -17,22 +17,22 @@ interface MockItem {
 }
 
 const ANIME_POSTERS = [
-  "assets/Attack_On_Titan.jpg",
-  "assets/Black_Clover_Season_2.jpg",
-  "assets/Demon_Slayer.jpg",
-  "assets/Jujutsu_Kaisen.jpg",
-  "assets/Mushoku_Tensei.jpg",
-  "assets/My_Hero_Academia.jpg",
-  "assets/One_Piece.jpg"
+  "assets/Attack_On_Titan.webp",
+  "assets/Black_Clover_Season_2.webp",
+  "assets/Demon_Slayer.webp",
+  "assets/Jujutsu_Kaisen.webp",
+  "assets/Mushoku_Tensei.webp",
+  "assets/My_Hero_Academia.webp",
+  "assets/One_Piece.webp"
 ];
 
 const CAROUSEL_ITEMS: MockItem[] = [
-  { id: 1, title: "Home", category: "Your starting screen", image: "assets/Home_Page.png" },
-  { id: 2, title: "Browse", category: "Trending and new shows", image: "assets/Home_Lists.png" },
-  { id: 3, title: "Sources", category: "Pick where the video streams from", image: "assets/Source_Selector.png" },
-  { id: 4, title: "Watchlist", category: "Your saved shows", image: "assets/My_List.png" },
-  { id: 5, title: "Schedule", category: "What airs this week", image: "assets/Airing_Schedule.png" },
-  { id: 6, title: "Settings", category: "Filters and subtitles", image: "assets/Settings_Top.png" }
+  { id: 1, title: "Home", category: "Your starting screen", image: "assets/Home_Page.webp" },
+  { id: 2, title: "Browse", category: "Trending and new shows", image: "assets/Home_Lists.webp" },
+  { id: 3, title: "Sources", category: "Pick where the video streams from", image: "assets/Source_Selector.webp" },
+  { id: 4, title: "Watchlist", category: "Your saved shows", image: "assets/My_List.webp" },
+  { id: 5, title: "Schedule", category: "What airs this week", image: "assets/Airing_Schedule.webp" },
+  { id: 6, title: "Settings", category: "Filters and subtitles", image: "assets/Settings_Top.webp" }
 ];
 
 export const ActionCarousel: React.FC = () => {
@@ -137,7 +137,10 @@ export const ActionCarousel: React.FC = () => {
                       {/* Image */}
                       <img
                         src={item.image}
-                        alt={item.title}
+                        alt={`AnimeTV ${item.title} Screen`}
+                        loading="lazy"
+                        width="480"
+                        height="270"
                         className="w-full h-full object-cover rounded-xl"
                       />
 

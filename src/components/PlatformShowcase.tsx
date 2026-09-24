@@ -32,7 +32,7 @@ const PLATFORMS: Platform[] = [
       'Use the media panel on your TV to pause'
     ],
     specs: 'Works on Android 5.0 and up. FireOS 5 and up.',
-    screenshot: 'assets/Home_Lists.png',
+    screenshot: 'assets/Home_Lists.webp',
     downloads: [
       { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk' }
     ]
@@ -50,7 +50,7 @@ const PLATFORMS: Platform[] = [
       'Resize the pop-out player'
     ],
     specs: 'Android 6.0 and up.',
-    screenshot: 'assets/Source_Selector.png',
+    screenshot: 'assets/Source_Selector.webp',
     downloads: [
       { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk' }
     ]
@@ -68,7 +68,7 @@ const PLATFORMS: Platform[] = [
       'Auto-update when a new version drops'
     ],
     specs: 'Windows 10 or 11 (x64 / ARM64).',
-    screenshot: 'assets/Settings_Top.png',
+    screenshot: 'assets/Settings_Top.webp',
     downloads: [
       { label: 'Download x64', url: 'https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0' },
       { label: 'Download ARM64', url: 'https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0' }
@@ -202,7 +202,10 @@ export const PlatformShowcase: React.FC = () => {
                     {/* Image display */}
                     <img
                       src={current.screenshot}
-                      alt={current.name}
+                      alt={`AnimeTV on ${current.name}`}
+                      loading="lazy"
+                      width="600"
+                      height="338"
                       className="w-full h-full object-cover rounded-lg filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                     />
 

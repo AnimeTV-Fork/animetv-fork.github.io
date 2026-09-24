@@ -3,29 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AnimeTV - Free Anime Streaming App. No Ads.</title>
+    <title>AnimeTV — Free Anime App for Android TV, Firestick &amp; Windows (Ad-Free)</title>
 
     <!-- SEO & Indexing -->
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://animetv-fork.github.io/" />
-    <meta name="description" content="Watch anime free on Android, Android TV, Fire TV, and Windows. No ads. No account. Open source." />
-    <meta name="keywords" content="anime app, free anime, Android TV, Fire TV, no ads, open source" />
+    <meta name="description" content="Watch 1080p anime free on Android, Android TV, Fire TV stick, and Windows. No ads, no tracking, no sign-up. Open-source APK with AniList/MAL sync &amp; D-pad remote support." />
+    <meta name="keywords" content="anime app, free anime android tv, anime firestick apk, animetv apk download, anime app windows 11, ad free anime streaming, open source anime player, anilist mal sync" />
     <meta name="author" content="AnimeTV-Fork" />
     <meta name="theme-color" content="#0a0612" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="AnimeTV - Free Anime Streaming" />
-    <meta property="og:description" content="Free anime app for Android, TV, and Windows. No ads. Open source." />
-    <meta property="og:image" content="https://animetv-fork.github.io/assets/Home_Page.png" />
+    <meta property="og:title" content="AnimeTV — Free Anime App for Android TV, Firestick &amp; Windows" />
+    <meta property="og:description" content="Free open-source anime app for Android, TV, and Windows. No ads. No accounts. 1080p multi-source streaming with AniList sync." />
+    <meta property="og:image" content="https://animetv-fork.github.io/assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AnimeTV Streaming App Interface" />
     <meta property="og:url" content="https://animetv-fork.github.io/" />
     <meta property="og:site_name" content="AnimeTV" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AnimeTV - Free Anime Streaming" />
-    <meta name="twitter:description" content="Free anime app for Android, TV, and Windows. No ads. Open source." />
-    <meta name="twitter:image" content="https://animetv-fork.github.io/assets/Home_Page.png" />
+    <meta name="twitter:title" content="AnimeTV — Free Anime App for Android TV, Firestick &amp; Windows" />
+    <meta name="twitter:description" content="Free open-source anime app for Android, TV, and Windows. No ads. No accounts. 1080p multi-source streaming with AniList sync." />
+    <meta name="twitter:image" content="https://animetv-fork.github.io/assets/og-image.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -37,15 +40,16 @@
           "@id": "https://animetv-fork.github.io/#website",
           "url": "https://animetv-fork.github.io/",
           "name": "AnimeTV",
-          "description": "Free anime streaming app for Android, Android TV, Fire TV, and Windows with no ads.",
+          "description": "Free anime streaming app for Android, Android TV, Fire TV stick, and Windows with no ads.",
           "inLanguage": "en-US"
         },
         {
           "@type": "SoftwareApplication",
           "@id": "https://animetv-fork.github.io/#software",
           "name": "AnimeTV",
-          "operatingSystem": "Android, Android TV, Fire OS, Windows",
+          "operatingSystem": "Android, Android TV, Fire OS, Windows 10, Windows 11",
           "applicationCategory": "EntertainmentApplication",
+          "softwareVersion": "5.15.0",
           "offers": {
             "@type": "Offer",
             "price": "0",
@@ -53,14 +57,56 @@
           },
           "description": "Watch anime free on Android, Android TV, Fire TV, and Windows. No ads. No account. Open source.",
           "url": "https://animetv-fork.github.io/",
-          "image": "https://animetv-fork.github.io/assets/Home_Page.png",
+          "image": "https://animetv-fork.github.io/assets/og-image.jpg",
           "downloadUrl": "https://github.com/AnimeTV-Fork/rc-store/releases/latest",
           "license": "https://www.gnu.org/licenses/gpl-3.0.html",
           "author": {
             "@type": "Organization",
             "name": "AnimeTV-Fork",
-            "url": "https://github.com/AnimeTV-Fork"
+            "url": "https://github.com/AnimeTV-Fork",
+            "sameAs": [
+              "https://github.com/AnimeTV-Fork/AnimeTV",
+              "https://discord.gg/ECazA5ZE6f"
+            ]
           }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://animetv-fork.github.io/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is AnimeTV legal and safe to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. AnimeTV does not host, upload, or store video files. It parses public streams from third-party sources. Use a VPN if specific scrapers are restricted in your region."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I sync AniList or MyAnimeList (MAL)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Open AnimeTV, navigate to Settings > Trackers, and select Connect. Authorize your AniList, MyAnimeList, or Trakt account to automatically sync your episode progress."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will AnimeTV run on Android TV or Amazon Firestick?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. AnimeTV is fully optimized for Android TV, Google TV, and Fire TV Stick with full D-pad remote navigation. You can install the APK directly using the Downloader app."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use external subtitles or a custom video player?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. AnimeTV supports loading external .SRT and .VTT subtitle files, switching multi-audio streams (Sub/Dub), and opening streams in external video players like VLC or MPV."
+              }
+            }
+          ]
         }
       ]
     }
@@ -70,40 +116,55 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./favicon.png" />
 
-    <!-- Poppins, Righteous & JetBrains Mono Fonts -->
+    <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Righteous&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-[#0a0612] text-[#f4f1fa] antialiased overflow-x-hidden selection:bg-primary selection:text-white font-sans">
     <div id="root">
-      <!-- Static crawlable fallback for search engine bots -->
+      <!-- Static crawlable fallback for search engine bots (Google, Bing, DuckDuckGo) -->
       <header>
-        <h1>AnimeTV — Free Anime Streaming App. No Ads.</h1>
-        <p>Watch anime free on Android, Android TV, Fire TV, and Windows. No ads. No account. Open source under GPLv3.</p>
+        <h1>AnimeTV — Free Anime App for Android TV, Firestick &amp; Windows (No Ads)</h1>
+        <p>Watch 1080p anime free on Android phones, Android TV, Amazon Firestick, and Windows 10/11. 100% ad-free, open-source under GPLv3, with zero account registration needed.</p>
       </header>
       <main>
         <section>
-          <h2>Features</h2>
+          <h2>Key Features</h2>
           <ul>
-            <li>No Advertisements or Tracking</li>
-            <li>No Account Required</li>
-            <li>Built for Android TV, Fire TV Remote D-pad, and Windows</li>
-            <li>Auto-Next, Auto-Skip Intro/Outro, AniList/MAL Sync</li>
-            <li>1080p &amp; 4K Anime Streams with Multi-Source Scrapers</li>
+            <li><strong>Zero Advertisements &amp; No Tracking:</strong> Pure anime streaming without popups, video ads, or telemetry.</li>
+            <li><strong>Built for TV Remote D-Pads:</strong> Seamless couch navigation on Google TV, Fire TV, and Android TV boxes.</li>
+            <li><strong>Multi-Source Scrapers:</strong> Stream in 1080p and 4K from Miruro, Animepahe, Anikoto, and AnimeFlix mirrors.</li>
+            <li><strong>Automatic Tracker Sync:</strong> Real-time scrobbling and watchlist tracking with AniList, MyAnimeList (MAL), and Trakt.</li>
+            <li><strong>DNS-over-HTTPS (DoH):</strong> Built-in DNS routing to bypass ISP domain blocks and streaming throttling.</li>
+            <li><strong>Cross-Platform Support:</strong> Available on Android APK, Fire OS, Windows x64, and Windows ARM64.</li>
           </ul>
         </section>
         <section>
-          <h2>Download AnimeTV</h2>
+          <h2>Download AnimeTV Releases</h2>
           <p><a href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk">Download AnimeTV APK for Android, Android TV, and Fire TV (v5.15.0)</a></p>
-          <p><a href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0">Download AnimeTV for Windows (x64)</a></p>
-          <p><a href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0">Download AnimeTV for Windows (ARM64)</a></p>
+          <p><a href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0">Download AnimeTV for Windows 10/11 (x64)</a></p>
+          <p><a href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0">Download AnimeTV for Windows 11 (ARM64)</a></p>
+          <p><a href="https://github.com/AnimeTV-Fork/AnimeTV">View AnimeTV Source Code on GitHub</a></p>
+        </section>
+        <section>
+          <h2>Frequently Asked Questions</h2>
+          <dl>
+            <dt><strong>Is AnimeTV legal and safe to use?</strong></dt>
+            <dd>Yes. AnimeTV does not host or store videos; it aggregates public streams. For private streaming, a VPN is recommended.</dd>
+            <dt><strong>How do I sync AniList or MyAnimeList?</strong></dt>
+            <dd>Go to Settings &gt; Trackers &gt; Connect in the app and sign in once to sync your watch progress.</dd>
+            <dt><strong>Will AnimeTV work on Firestick and Android TV?</strong></dt>
+            <dd>Yes, sideload the APK using the Downloader app on Fire TV or install directly on Android TV.</dd>
+            <dt><strong>Can I load external subtitles and players?</strong></dt>
+            <dd>Yes, .SRT/.VTT subtitles, audio track switching (Sub/Dub), and external players (VLC, MPV) are supported.</dd>
+          </dl>
         </section>
       </main>
     </div>
     <noscript>
       <div style="padding: 2rem; max-width: 800px; margin: 0 auto; font-family: sans-serif; color: #fff; background: #0a0612;">
-        <h1>AnimeTV — Free Anime Streaming App. No Ads.</h1>
+        <h1>AnimeTV — Free Anime App for Android TV, Firestick &amp; Windows</h1>
         <p>Watch anime free on Android, Android TV, Fire TV, and Windows. Open source, no ads, no account needed.</p>
         <p><a href="https://github.com/AnimeTV-Fork/rc-store/releases/latest" style="color: #c084fc;">Download Latest Release on GitHub</a></p>
       </div>
