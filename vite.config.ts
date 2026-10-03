@@ -14,7 +14,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          animation: ['framer-motion', 'gsap', 'animejs', 'lenis'],
+          animation: ['framer-motion', 'animejs', 'lenis'],
           swiper: ['swiper'],
         },
       },

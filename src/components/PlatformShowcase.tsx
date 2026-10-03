@@ -34,7 +34,7 @@ const PLATFORMS: Platform[] = [
     specs: 'Works on Android 5.0 and up. FireOS 5 and up.',
     screenshot: 'assets/Home_Lists.webp',
     downloads: [
-      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk' }
+      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk' }
     ]
   },
   {
@@ -52,7 +52,7 @@ const PLATFORMS: Platform[] = [
     specs: 'Android 6.0 and up.',
     screenshot: 'assets/Source_Selector.webp',
     downloads: [
-      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk' }
+      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk' }
     ]
   },
   {
@@ -70,8 +70,8 @@ const PLATFORMS: Platform[] = [
     specs: 'Windows 10 or 11 (x64 / ARM64).',
     screenshot: 'assets/Settings_Top.webp',
     downloads: [
-      { label: 'Download x64', url: 'https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0' },
-      { label: 'Download ARM64', url: 'https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0' }
+      { label: 'Download x64', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-x64.exe' },
+      { label: 'Download ARM64', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-arm.exe' }
     ]
   }
 ];
@@ -86,7 +86,6 @@ export const PlatformShowcase: React.FC = () => {
       className="relative py-24 px-4 overflow-hidden"
       style={{ background: 'var(--color-bg-end)' }}
     >
-      <div className="absolute inset-0 noise-overlay pointer-events-none opacity-50" />
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -191,9 +190,6 @@ export const PlatformShowcase: React.FC = () => {
               {/* Right Column: Visual Mockup */}
               <div className="lg:col-span-6 w-full">
                 <div className="relative group w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-                  {/* Subtle ambient light back-glow */}
-                  <div className="absolute -inset-4 bg-primary/15 rounded-xl filter blur-xl opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-
                   {/* Outer Frame */}
                   <div className="relative h-full w-full bg-[#050b0e] border border-white/10 rounded-xl p-2.5 overflow-hidden">
                     {/* Screen glare reflection */}
@@ -204,9 +200,10 @@ export const PlatformShowcase: React.FC = () => {
                       src={current.screenshot}
                       alt={`AnimeTV on ${current.name}`}
                       loading="lazy"
+                      decoding="async"
                       width="600"
                       height="338"
-                      className="w-full h-full object-cover rounded-lg filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                      className="w-full h-full object-cover rounded-lg opacity-95 group-hover:opacity-100 transition-opacity duration-300"
                     />
 
                     {/* TV Remote Focus Box corner indicator simulation */}

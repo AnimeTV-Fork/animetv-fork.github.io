@@ -11,9 +11,15 @@ export const ParticleBackground: React.FC<{ theme: string }> = () => {
         </defs>
         <rect width="100%" height="100%" fill="url(#dotGrid)" />
       </svg>
-      {/* Subtle background glow spots matching the GitHub / developer theme */}
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[var(--color-primary)] opacity-15 filter blur-[120px]" />
-      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-[var(--color-secondary)] opacity-10 filter blur-[100px]" />
+      {/* Subtle background glow spots rendered with zero-cost radial gradients */}
+      <div
+        className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full pointer-events-none opacity-15"
+        style={{ background: 'radial-gradient(circle, var(--color-primary) 0%, transparent 70%)' }}
+      />
+      <div
+        className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] rounded-full pointer-events-none opacity-10"
+        style={{ background: 'radial-gradient(circle, var(--color-secondary) 0%, transparent 70%)' }}
+      />
     </div>
   );
 };

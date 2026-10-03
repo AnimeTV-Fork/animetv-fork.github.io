@@ -52,17 +52,11 @@ export const Faq: React.FC = () => {
         <div className="space-y-4">
           {FAQS.map((faq, index) => {
             const isOpen = activeIndex === index;
-            const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-              e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-            };
 
             return (
               <div
                 key={index}
-                onMouseMove={handleMouseMove}
-                className="glass-card overflow-hidden spotlight-card"
+                className="glass-card overflow-hidden transition-all duration-200"
               >
                 <button
                   onClick={() => toggleFaq(index)}
@@ -81,7 +75,7 @@ export const Faq: React.FC = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
                       <div className="px-6 pb-6 pt-2 text-[var(--color-muted)] text-sm leading-relaxed border-t border-white/5">
                         {faq.answer}

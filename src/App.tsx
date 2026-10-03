@@ -25,7 +25,7 @@ function ScrollToTop() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-6 right-6 z-50 p-3 bg-primary/80 backdrop-blur-md text-white rounded-full shadow-lg shadow-primary/30 hover:bg-primary hover:scale-110 active:scale-95 transition-all"
+      className="fixed bottom-6 right-6 z-50 p-3 bg-primary/80 backdrop-blur-sm text-white rounded-full shadow-lg shadow-primary/30 hover:bg-primary hover:scale-110 active:scale-95 transition-all"
       aria-label="Scroll to top"
     >
       <Icon icon="mdi:chevron-up" className="text-xl" />
@@ -34,26 +34,28 @@ function ScrollToTop() {
 }
 
 function App() {
-  // Initialize smooth scroll wrapper
+  // Ultra-smooth damped inertia scroll engine
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
+      infinite: false,
     });
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
@@ -86,9 +88,9 @@ function App() {
       </main>
 
       {/* Download CTA Banner */}
-      <section id="download" className="relative z-10 py-24 px-4 overflow-hidden" style={{ background: 'linear-gradient(to bottom, var(--color-bg-start), #000)' }}>
+      <section id="download" className="section-cv relative z-10 py-24 px-4 overflow-hidden" style={{ background: 'linear-gradient(to bottom, var(--color-bg-start), #000)' }}>
         <div className="section-divider absolute top-0 left-0 right-0" />
-        <div className="ambient-orb w-[600px] h-[600px] bg-[var(--color-primary)] top-[30%] left-[50%] -translate-x-1/2" style={{ opacity: 0.08 }} />
+        <div className="ambient-orb w-[500px] h-[500px] top-[30%] left-[50%] -translate-x-1/2" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-black uppercase mb-4 tracking-tight">
             Ready to <span className="gradient-text">watch?</span>
@@ -98,16 +100,16 @@ function App() {
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center">
             <a
-              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk"
+              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-magnetic btn-primary shine-sweep text-base px-6 sm:px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
             >
               <Icon icon="mdi:android" className="text-2xl" />
-              Android / TV APK (v5.15.0)
+              Android / TV APK (v5.15.2)
             </a>
             <a
-              href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup.exe?sign=AdO0g6PR90W-ROl3-Q0RUSIOzkIE0VrAUXACm_EHvLk=:0"
+              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-x64.exe"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-magnetic btn-secondary text-base px-6 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
@@ -116,7 +118,7 @@ function App() {
               Windows (x64)
             </a>
             <a
-              href="https://drive.jitendhull.tech/d/Maindrive/animetv/Download-Links-Community/animetv-5.15.0-setup-arm64.exe?sign=zIabKP-vn6Tc4RG8SZYY8paBespLMJVIREjbZvE58yQ=:0"
+              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-arm.exe"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-magnetic btn-secondary text-base px-6 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"

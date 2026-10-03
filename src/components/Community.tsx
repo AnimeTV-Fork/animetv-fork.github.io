@@ -11,7 +11,13 @@ export const Community: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left panel: text details */}
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-6"
+          >
             <span className="badge-glow">Open source</span>
             <h2 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tight leading-none">
               Built by fans. <br />
@@ -52,12 +58,17 @@ export const Community: React.FC = () => {
                 Chat on Discord
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right panel: Static activity visual tracker mimicking Git commits */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 rounded-2xl filter blur-xl opacity-30" />
-            <div className="relative glass-panel p-6 rounded-2xl border border-white/5">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="relative"
+          >
+            <div className="relative glass-panel p-6 rounded-2xl border border-white/5 shadow-2xl">
               <div className="flex justify-between items-center mb-6">
                 <span className="text-sm font-bold text-white flex items-center gap-2">
                   <Icon icon="mdi:git-commit" className="text-primary" />
@@ -71,13 +82,9 @@ export const Community: React.FC = () => {
                 {Array.from({ length: 49 }).map((_, i) => {
                   const opacity = (i % 3 === 0) ? 'bg-primary' : (i % 5 === 0) ? 'bg-primary-glow' : (i % 2 === 0) ? 'bg-secondary' : 'bg-white/10';
                   return (
-                    <motion.div
+                    <div
                       key={i}
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.005 }}
-                      className={`aspect-square rounded-[2px] ${opacity}`}
+                      className={`aspect-square rounded-[2px] transition-transform duration-200 hover:scale-125 ${opacity}`}
                     />
                   );
                 })}
@@ -94,7 +101,7 @@ export const Community: React.FC = () => {
                 <span>Highly Active</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

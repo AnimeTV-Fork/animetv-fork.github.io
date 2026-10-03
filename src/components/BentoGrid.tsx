@@ -11,27 +11,19 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, className = "", children }) => {
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-  };
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -5 }}
-      onMouseMove={handleMouseMove}
-      className={`glass-panel p-6 rounded-2xl relative overflow-hidden group transition-all duration-300 hover:border-[var(--color-primary)]/40 hover:shadow-[0_0_30px_var(--glass-glow-shadow)] spotlight-card flex flex-col justify-between dpad-ring ${className}`}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className={`glass-panel p-6 rounded-2xl relative overflow-hidden group transition-all duration-300 hover:border-[var(--color-primary)]/40 hover:shadow-[0_0_25px_var(--glass-glow-shadow)] flex flex-col justify-between dpad-ring ${className}`}
     >
       {/* Background glow overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div>
-        <div className="w-12 h-12 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+        <div className="w-12 h-12 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300">
           <Icon icon={icon} className="text-2xl text-primary-glow" />
         </div>
         <h3 className="text-xl font-bold tracking-tight text-white mb-2">{title}</h3>

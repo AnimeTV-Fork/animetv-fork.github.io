@@ -28,9 +28,9 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled
-            ? 'bg-black/70 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-primary/5'
+            ? 'bg-black/80 backdrop-blur-md border-b border-white/5 shadow-2xl shadow-primary/5'
             : 'bg-transparent'
         }`}
       >
@@ -82,7 +82,7 @@ export function Navbar() {
               Discord
             </a>
             <a
-              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk"
+              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-magnetic btn-primary text-sm px-4 py-2 focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
@@ -145,7 +145,7 @@ export function Navbar() {
               </div>
               <hr className="border-white/10 my-2" />
               <a
-                href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.0/5.15.0.apk"
+                href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-3 text-sm font-bold text-center bg-gradient-to-r from-primary to-primary-glow text-[var(--color-btn-primary-text)] rounded-lg focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"

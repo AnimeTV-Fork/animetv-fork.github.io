@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import { Icon } from '@iconify/react';
-import { motion } from 'framer-motion';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -152,16 +151,12 @@ export const ActionCarousel: React.FC = () => {
 
                       {/* TV Highlight Bracket / Focus Ring */}
                       {isFocused && (
-                        <motion.div
-                          layoutId="focusRing"
-                          className="absolute inset-0 border-4 border-primary-glow rounded-xl z-20 pointer-events-none shadow-[0_0_25px_rgba(217,70,239,0.5)]"
-                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        >
+                        <div className="absolute inset-0 border-4 border-primary-glow rounded-xl z-20 pointer-events-none shadow-[0_0_20px_var(--glass-glow-shadow)]">
                           <div className="absolute -top-[4px] -left-[4px] w-4 h-4 border-t-4 border-l-4 border-primary" />
                           <div className="absolute -top-[4px] -right-[4px] w-4 h-4 border-t-4 border-r-4 border-primary" />
                           <div className="absolute -bottom-[4px] -left-[4px] w-4 h-4 border-b-4 border-l-4 border-primary" />
                           <div className="absolute -bottom-[4px] -right-[4px] w-4 h-4 border-b-4 border-r-4 border-primary" />
-                        </motion.div>
+                        </div>
                       )}
                     </div>
                   </SwiperSlide>
@@ -239,6 +234,10 @@ export const ActionCarousel: React.FC = () => {
                     <img
                       src={poster}
                       alt={title}
+                      loading="lazy"
+                      decoding="async"
+                      width="160"
+                      height="240"
                       className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">

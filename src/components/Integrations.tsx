@@ -52,24 +52,15 @@ export const Integrations: React.FC = () => {
 
         {/* Integration Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TRACKERS.map((tracker) => {
-            const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-              e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-            };
-
-            return (
-              <motion.div
-                key={tracker.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ scale: 1.02 }}
-                onMouseMove={handleMouseMove}
-                className="glass-card p-8 flex flex-col justify-between spotlight-card"
-              >
+          {TRACKERS.map((tracker) => (
+            <motion.div
+              key={tracker.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="glass-card p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_25px_var(--glass-glow-shadow)]"
+            >
               <div>
                 {/* Brand Logo & Title */}
                 <div className="flex items-center gap-4 mb-6">
@@ -100,12 +91,12 @@ export const Integrations: React.FC = () => {
               <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center text-xs font-mono">
                 <span className="text-[var(--color-muted)]">Status</span>
                 <span className="text-green-400 flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-green-500" />
                   ONLINE
                 </span>
               </div>
             </motion.div>
-          );})}
+          ))}
         </div>
       </div>
     </section>
