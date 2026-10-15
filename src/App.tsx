@@ -10,6 +10,7 @@ import { ActionCarousel } from './components/ActionCarousel';
 import { Integrations } from './components/Integrations';
 import { Community } from './components/Community';
 import { Faq } from './components/Faq';
+import { useLatestRelease } from './useLatestRelease';
 
 function ScrollToTop() {
   const [visible, setVisible] = useState(false);
@@ -34,6 +35,8 @@ function ScrollToTop() {
 }
 
 function App() {
+  const release = useLatestRelease();
+
   // Ultra-smooth damped inertia scroll engine
   useEffect(() => {
     const lenis = new Lenis({
@@ -100,32 +103,26 @@ function App() {
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center">
             <a
-              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk"
+              href={release.apkUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-magnetic btn-primary shine-sweep text-base px-6 sm:px-8 py-4 focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
             >
               <Icon icon="mdi:android" className="text-2xl" />
-              Android / TV APK (v5.15.2)
+              Android / TV APK (v{release.version})
             </a>
-            <a
-              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-x64.exe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary text-base px-6 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
-            >
-              <Icon icon="mdi:microsoft-windows" className="text-2xl" />
-              Windows (x64)
-            </a>
-            <a
-              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-arm.exe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-magnetic btn-secondary text-base px-6 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
-            >
-              <Icon icon="mdi:microsoft-windows" className="text-2xl" />
-              Windows (ARM64)
-            </a>
+            {release.windowsDownloads.map((win) => (
+              <a
+                key={win.url}
+                href={win.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-magnetic btn-secondary text-base px-6 py-4 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+              >
+                <Icon icon="mdi:microsoft-windows" className="text-2xl" />
+                {win.label}
+              </a>
+            ))}
           </div>
           <div className="mt-6 flex justify-center">
             <a

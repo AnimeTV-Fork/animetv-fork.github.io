@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Downloading AnimeTV...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0a0612;
+      color: #f4f1fa;
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .box {
+      max-width: 480px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+    }
+    a {
+      color: #ff007f;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Downloading AnimeTV...</h2>
+    <p id="msg">Locating latest release from rc-store...</p>
+    <p><small>If download does not begin, <a id="fallback" href="https://github.com/AnimeTV-Fork/rc-store/releases/latest">click here</a>.</small></p>
+  </div>
+  <script>
+    // ponytail: redirects Fire TV Downloader / direct links to dynamic version.apk. Upgrade to Cloudflare worker if client fetch blocked.
+    (async function() {
+      var fallbackUrl = "https://github.com/AnimeTV-Fork/rc-store/releases/latest";
+      var params = new URLSearchParams(window.location.search);
+      var isWin = params.get('type') === 'windows' || params.get('type') === 'win';
+      try {
+        var res = await fetch("https://api.github.com/repos/AnimeTV-Fork/rc-store/releases/latest");
+        if (res.ok) {
+          var data = await res.json();
+          var apk = data.assets && data.assets.find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.apk'); });
+          var exe = data.assets && data.assets.find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.exe'); });
+          var target = (isWin ? (exe && exe.browser_download_url) : (apk && apk.browser_download_url)) || fallbackUrl;
+          document.getElementById('fallback').href = target;
+          document.getElementById('msg').innerText = "Starting download...";
+          window.location.replace(target);
+          return;
+        }
+      } catch (e) {}
+      window.location.replace(fallbackUrl);
+    })();
+  </script>
+</body>
+</html>

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLatestRelease } from '../useLatestRelease';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const release = useLatestRelease();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -82,7 +84,7 @@ export function Navbar() {
               Discord
             </a>
             <a
-              href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk"
+              href={release.apkUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-magnetic btn-primary text-sm px-4 py-2 focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"
@@ -145,7 +147,7 @@ export function Navbar() {
               </div>
               <hr className="border-white/10 my-2" />
               <a
-                href="https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk"
+                href={release.apkUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-3 text-sm font-bold text-center bg-gradient-to-r from-primary to-primary-glow text-[var(--color-btn-primary-text)] rounded-lg focus-visible:ring-2 focus-visible:ring-primary-glow focus-visible:outline-none"

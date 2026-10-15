@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLatestRelease } from '../useLatestRelease';
 
 interface DownloadOption {
   label: string;
@@ -18,67 +19,66 @@ interface Platform {
   downloads: DownloadOption[];
 }
 
-const PLATFORMS: Platform[] = [
-  {
-    id: 'android-tv',
-    name: 'Android TV & Fire TV',
-    icon: 'mdi:television-play',
-    badge: 'Made for the couch',
-    features: [
-      'Navigate with your TV remote',
-      'Pop out a small player window (PiP)',
-      'Smooth playback on big screens',
-      'Phone call? Playback pauses itself',
-      'Use the media panel on your TV to pause'
-    ],
-    specs: 'Works on Android 5.0 and up. FireOS 5 and up.',
-    screenshot: 'assets/Home_Lists.webp',
-    downloads: [
-      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk' }
-    ]
-  },
-  {
-    id: 'android-mobile',
-    name: 'Android Phone',
-    icon: 'mdi:cellphone-play',
-    badge: 'Take it with you',
-    features: [
-      'Swipe to change volume, brightness, or skip',
-      'Phone call? Playback pauses itself',
-      'Save your list for offline',
-      'Watch in portrait or landscape',
-      'Resize the pop-out player'
-    ],
-    specs: 'Android 6.0 and up.',
-    screenshot: 'assets/Source_Selector.webp',
-    downloads: [
-      { label: 'Download APK', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2.apk' }
-    ]
-  },
-  {
-    id: 'windows-desktop',
-    name: 'Windows',
-    icon: 'mdi:microsoft-windows',
-    badge: 'Big screen, real keyboard',
-    features: [
-      'Plug in a controller and play',
-      'Set your own keyboard shortcuts',
-      'Smooth video on your GPU',
-      'Track your watch stats offline',
-      'Auto-update when a new version drops'
-    ],
-    specs: 'Windows 10 or 11 (x64 / ARM64).',
-    screenshot: 'assets/Settings_Top.webp',
-    downloads: [
-      { label: 'Download x64', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-x64.exe' },
-      { label: 'Download ARM64', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-arm.exe' }
-    ]
-  }
-];
-
 export const PlatformShowcase: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const current = PLATFORMS[activeTab];
+  const release = useLatestRelease();
+
+  const platforms: Platform[] = [
+    {
+      id: 'android-tv',
+      name: 'Android TV & Fire TV',
+      icon: 'mdi:television-play',
+      badge: 'Made for the couch',
+      features: [
+        'Navigate with your TV remote',
+        'Pop out a small player window (PiP)',
+        'Smooth playback on big screens',
+        'Phone call? Playback pauses itself',
+        'Use the media panel on your TV to pause'
+      ],
+      specs: 'Works on Android 5.0 and up. FireOS 5 and up.',
+      screenshot: 'assets/Home_Lists.webp',
+      downloads: [
+        { label: `Download APK (v${release.version})`, url: release.apkUrl }
+      ]
+    },
+    {
+      id: 'android-mobile',
+      name: 'Android Phone',
+      icon: 'mdi:cellphone-play',
+      badge: 'Take it with you',
+      features: [
+        'Swipe to change volume, brightness, or skip',
+        'Phone call? Playback pauses itself',
+        'Save your list for offline',
+        'Watch in portrait or landscape',
+        'Resize the pop-out player'
+      ],
+      specs: 'Android 6.0 and up.',
+      screenshot: 'assets/Source_Selector.webp',
+      downloads: [
+        { label: `Download APK (v${release.version})`, url: release.apkUrl }
+      ]
+    },
+    {
+      id: 'windows-desktop',
+      name: 'Windows',
+      icon: 'mdi:microsoft-windows',
+      badge: 'Big screen, real keyboard',
+      features: [
+        'Plug in a controller and play',
+        'Set your own keyboard shortcuts',
+        'Smooth video on your GPU',
+        'Track your watch stats offline',
+        'Auto-update when a new version drops'
+      ],
+      specs: 'Windows 10 or 11 (x64 / ARM64).',
+      screenshot: 'assets/Settings_Top.webp',
+      downloads: release.windowsDownloads
+    }
+  ];
+
+  const current = platforms[activeTab];
 
   return (
     <section
@@ -103,7 +103,7 @@ export const PlatformShowcase: React.FC = () => {
 
         {/* Tab Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-12 max-w-2xl mx-auto">
-          {PLATFORMS.map((platform, idx) => {
+          {platforms.map((platform, idx) => {
             const isActive = idx === activeTab;
             return (
               <button
