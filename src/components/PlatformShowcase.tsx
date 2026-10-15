@@ -74,7 +74,10 @@ export const PlatformShowcase: React.FC = () => {
       ],
       specs: 'Windows 10 or 11 (x64 / ARM64).',
       screenshot: 'assets/Settings_Top.webp',
-      downloads: release.windowsDownloads
+      downloads: release.windowsDownloads.map((d) => ({
+        label: d.shortLabel || d.label,
+        url: d.url
+      }))
     }
   ];
 

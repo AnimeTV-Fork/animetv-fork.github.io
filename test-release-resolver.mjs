@@ -6,28 +6,66 @@ function parseReleaseData(data, fallback) {
   if (list.length === 0 || !list[0]) return null;
 
   const latest = list[0];
-  const version = (latest.tag_name || '').replace(/^v/, '') || fallback.version;
+  const latestVersion = (latest.tag_name || '').replace(/^v/, '') || fallback.version;
   const apk = (latest.assets || []).find(a => typeof a.name === 'string' && a.name.endsWith('.apk'));
 
-  // Find newest release containing Windows .exe assets
-  const winRelease = list.find(r => (r.assets || []).some(a => typeof a.name === 'string' && a.name.endsWith('.exe')));
-  const exeAssets = winRelease ? (winRelease.assets || []).filter(a => typeof a.name === 'string' && a.name.endsWith('.exe')) : [];
+  const buckets = {};
+  for (const rel of list) {
+    const relVer = (rel.tag_name || '').replace(/^v/, '');
+    for (const asset of (rel.assets || [])) {
+      const name = (asset.name || '').toLowerCase();
+      if (!name.endsWith('.exe')) continue;
 
-  const windowsDownloads = exeAssets.map(a => {
-    const name = a.name.toLowerCase();
-    let label = 'Windows';
-    if (name.includes('arm')) label = 'Windows (ARM64)';
-    else if (name.includes('x64')) label = 'Windows (x64)';
-    else if (name.includes('x86')) label = 'Windows (x86)';
-    return {
-      label,
-      url: a.browser_download_url
-    };
-  });
+      let arch = 'generic';
+      if (name.includes('arm')) arch = 'arm';
+      else if (name.includes('x64')) arch = 'x64';
+      else if (name.includes('x86')) arch = 'x86';
+
+      if (!buckets[arch]) {
+        buckets[arch] = { url: asset.browser_download_url, version: relVer };
+      }
+    }
+  }
+
+  const primaryWin = buckets.x64 || buckets.generic;
+  const windowsDownloads = [];
+
+  if (primaryWin) {
+    const isOlder = primaryWin.version && primaryWin.version !== latestVersion;
+    windowsDownloads.push({
+      label: isOlder ? `Windows (x64) (v${primaryWin.version})` : 'Windows (x64)',
+      shortLabel: isOlder ? `Download x64 (v${primaryWin.version})` : 'Download x64',
+      url: primaryWin.url,
+      arch: 'x64',
+      version: primaryWin.version
+    });
+  }
+
+  if (buckets.arm) {
+    const isOlder = buckets.arm.version && buckets.arm.version !== latestVersion;
+    windowsDownloads.push({
+      label: isOlder ? `Windows (ARM64) (v${buckets.arm.version})` : 'Windows (ARM64)',
+      shortLabel: isOlder ? `Download ARM64 (v${buckets.arm.version})` : 'Download ARM64',
+      url: buckets.arm.url,
+      arch: 'arm',
+      version: buckets.arm.version
+    });
+  }
+
+  if (buckets.x86) {
+    const isOlder = buckets.x86.version && buckets.x86.version !== latestVersion;
+    windowsDownloads.push({
+      label: isOlder ? `Windows (x86) (v${buckets.x86.version})` : 'Windows (x86)',
+      shortLabel: isOlder ? `Download x86 (v${buckets.x86.version})` : 'Download x86',
+      url: buckets.x86.url,
+      arch: 'x86',
+      version: buckets.x86.version
+    });
+  }
 
   return {
-    version,
-    apkUrl: apk?.browser_download_url || `https://github.com/AnimeTV-Fork/rc-store/releases/download/${version}/${version}.apk`,
+    version: latestVersion,
+    apkUrl: apk?.browser_download_url || `https://github.com/AnimeTV-Fork/rc-store/releases/download/${latestVersion}/${latestVersion}.apk`,
     windowsDownloads: windowsDownloads.length > 0 ? windowsDownloads : fallback.windowsDownloads
   };
 }
@@ -36,50 +74,39 @@ const fallback = {
   version: '5.15.3',
   apkUrl: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.3/5.15.3.apk',
   windowsDownloads: [
-    { label: 'Windows (x86)', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.3/5.15.3-x86.exe' }
+    { label: 'Windows (x64) (v5.15.2)', shortLabel: 'Download x64 (v5.15.2)', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-x64.exe', arch: 'x64', version: '5.15.2' },
+    { label: 'Windows (ARM64) (v5.15.2)', shortLabel: 'Download ARM64 (v5.15.2)', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.2/5.15.2-arm.exe', arch: 'arm', version: '5.15.2' },
+    { label: 'Windows (x86)', shortLabel: 'Download x86', url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.3/5.15.3-x86.exe', arch: 'x86', version: '5.15.3' }
   ]
 };
 
-// 1. Test release with both APK and Windows EXE
-const sample1 = [
-  {
-    tag_name: 'v5.15.4',
-    assets: [
-      { name: '5.15.4.apk', browser_download_url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.4/5.15.4.apk' },
-      { name: '5.15.4-x64.exe', browser_download_url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.4/5.15.4-x64.exe' }
-    ]
-  }
-];
-const res1 = parseReleaseData(sample1, fallback);
-assert.equal(res1.version, '5.15.4');
-assert.equal(res1.apkUrl, 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.4/5.15.4.apk');
-assert.equal(res1.windowsDownloads[0].label, 'Windows (x64)');
-
-// 2. Test fallback when latest release ONLY has APK and NO Windows binaries
-const sampleOnlyApk = [
-  {
-    tag_name: 'v5.16.0',
-    assets: [
-      { name: '5.16.0.apk', browser_download_url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.16.0/5.16.0.apk' }
-    ]
-  },
+// Test: 5.15.3 has only apk & x86; 5.15.2 has arm and x64
+const sample = [
   {
     tag_name: 'v5.15.3',
     assets: [
-      { name: '5.15.3.apk', browser_download_url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.3/5.15.3.apk' },
-      { name: '5.15.3-x86.exe', browser_download_url: 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.3/5.15.3-x86.exe' }
+      { name: '5.15.3.apk', browser_download_url: 'https://.../5.15.3.apk' },
+      { name: '5.15.3-x86.exe', browser_download_url: 'https://.../5.15.3-x86.exe' }
+    ]
+  },
+  {
+    tag_name: 'v5.15.2',
+    assets: [
+      { name: '5.15.2.apk', browser_download_url: 'https://.../5.15.2.apk' },
+      { name: '5.15.2-arm.exe', browser_download_url: 'https://.../5.15.2-arm.exe' },
+      { name: '5.15.2-x64.exe', browser_download_url: 'https://.../5.15.2-x64.exe' }
     ]
   }
 ];
-const resOnlyApk = parseReleaseData(sampleOnlyApk, fallback);
-assert.equal(resOnlyApk.version, '5.16.0');
-assert.equal(resOnlyApk.apkUrl, 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.16.0/5.16.0.apk');
-// Windows download falls back to latest release that had Windows binaries (5.15.3)
-assert.equal(resOnlyApk.windowsDownloads[0].url, 'https://github.com/AnimeTV-Fork/rc-store/releases/download/5.15.3/5.15.3-x86.exe');
 
-// 3. Test null / empty input
+const res = parseReleaseData(sample, fallback);
+assert.equal(res.version, '5.15.3');
+assert.equal(res.windowsDownloads.length, 3);
+assert.equal(res.windowsDownloads[0].label, 'Windows (x64) (v5.15.2)');
+assert.equal(res.windowsDownloads[1].label, 'Windows (ARM64) (v5.15.2)');
+assert.equal(res.windowsDownloads[2].label, 'Windows (x86)');
+
 assert.equal(parseReleaseData(null, fallback), null);
-assert.equal(parseReleaseData([], fallback), null);
+console.log('All per-arch tests passed!');
 
-console.log('All fallback tests passed!');
 

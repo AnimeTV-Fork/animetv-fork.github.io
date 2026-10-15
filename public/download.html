@@ -40,7 +40,7 @@
     (async function() {
       var fallbackUrl = "https://github.com/AnimeTV-Fork/rc-store/releases/latest";
       var params = new URLSearchParams(window.location.search);
-      var isWin = params.get('type') === 'windows' || params.get('type') === 'win';
+      var type = (params.get('type') || '').toLowerCase();
       try {
         var res = await fetch("https://api.github.com/repos/AnimeTV-Fork/rc-store/releases?per_page=10");
         if (res.ok) {
@@ -48,9 +48,31 @@
           var list = Array.isArray(data) ? data : [data];
           var latest = list[0] || {};
           var apk = (latest.assets || []).find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.apk'); });
-          var winRel = list.find(function(r) { return (r.assets || []).some(function(a) { return typeof a.name === 'string' && a.name.endsWith('.exe'); }); });
-          var exe = winRel && (winRel.assets || []).find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.exe'); });
-          var target = (isWin ? (exe && exe.browser_download_url) : (apk && apk.browser_download_url)) || fallbackUrl;
+
+          var buckets = {};
+          for (var i = 0; i < list.length; i++) {
+            var rel = list[i];
+            var assets = rel.assets || [];
+            for (var j = 0; j < assets.length; j++) {
+              var a = assets[j];
+              var name = (a.name || '').toLowerCase();
+              if (!name.endsWith('.exe')) continue;
+              var arch = 'generic';
+              if (name.includes('arm')) arch = 'arm';
+              else if (name.includes('x64')) arch = 'x64';
+              else if (name.includes('x86')) arch = 'x86';
+              if (!buckets[arch]) buckets[arch] = a.browser_download_url;
+            }
+          }
+
+          var target;
+          if (type === 'arm' || type === 'arm64') target = buckets.arm;
+          else if (type === 'x86') target = buckets.x86;
+          else if (type === 'x64') target = buckets.x64 || buckets.generic;
+          else if (type === 'windows' || type === 'win') target = buckets.x64 || buckets.x86 || buckets.generic;
+          else target = apk && apk.browser_download_url;
+
+          target = target || fallbackUrl;
           document.getElementById('fallback').href = target;
           document.getElementById('msg').innerText = "Starting download...";
           window.location.replace(target);
