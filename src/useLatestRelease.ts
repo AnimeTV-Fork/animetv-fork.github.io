@@ -23,10 +23,17 @@ const CACHE_KEY = 'animetv_latest_release';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
 export function parseReleaseData(data: any): LatestRelease | null {
-  if (!data || !Array.isArray(data.assets)) return null;
-  const version = (data.tag_name || '').replace(/^v/, '') || FALLBACK_RELEASE.version;
-  const apk = data.assets.find((a: any) => typeof a.name === 'string' && a.name.endsWith('.apk'));
-  const exeAssets = data.assets.filter((a: any) => typeof a.name === 'string' && a.name.endsWith('.exe'));
+  if (!data) return null;
+  const list = Array.isArray(data) ? data : [data];
+  if (list.length === 0 || !list[0]) return null;
+
+  const latest = list[0];
+  const version = (latest.tag_name || '').replace(/^v/, '') || FALLBACK_RELEASE.version;
+  const apk = (latest.assets || []).find((a: any) => typeof a.name === 'string' && a.name.endsWith('.apk'));
+
+  // If latest release lacks Windows .exe, look for newest release containing .exe assets
+  const winRelease = list.find((r: any) => (r.assets || []).some((a: any) => typeof a.name === 'string' && a.name.endsWith('.exe')));
+  const exeAssets = winRelease ? (winRelease.assets || []).filter((a: any) => typeof a.name === 'string' && a.name.endsWith('.exe')) : [];
 
   const windowsDownloads: ReleaseAsset[] = exeAssets.map((a: any) => {
     const name = a.name.toLowerCase();
@@ -66,7 +73,7 @@ export async function fetchLatestRelease(): Promise<LatestRelease> {
   } catch {}
 
   if (!inFlightPromise) {
-    inFlightPromise = fetch('https://api.github.com/repos/AnimeTV-Fork/rc-store/releases/latest')
+    inFlightPromise = fetch('https://api.github.com/repos/AnimeTV-Fork/rc-store/releases?per_page=10')
       .then(res => (res.ok ? res.json() : null))
       .then(data => {
         const parsed = parseReleaseData(data) || FALLBACK_RELEASE;

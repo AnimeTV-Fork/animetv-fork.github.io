@@ -42,11 +42,14 @@
       var params = new URLSearchParams(window.location.search);
       var isWin = params.get('type') === 'windows' || params.get('type') === 'win';
       try {
-        var res = await fetch("https://api.github.com/repos/AnimeTV-Fork/rc-store/releases/latest");
+        var res = await fetch("https://api.github.com/repos/AnimeTV-Fork/rc-store/releases?per_page=10");
         if (res.ok) {
           var data = await res.json();
-          var apk = data.assets && data.assets.find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.apk'); });
-          var exe = data.assets && data.assets.find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.exe'); });
+          var list = Array.isArray(data) ? data : [data];
+          var latest = list[0] || {};
+          var apk = (latest.assets || []).find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.apk'); });
+          var winRel = list.find(function(r) { return (r.assets || []).some(function(a) { return typeof a.name === 'string' && a.name.endsWith('.exe'); }); });
+          var exe = winRel && (winRel.assets || []).find(function(a) { return typeof a.name === 'string' && a.name.endsWith('.exe'); });
           var target = (isWin ? (exe && exe.browser_download_url) : (apk && apk.browser_download_url)) || fallbackUrl;
           document.getElementById('fallback').href = target;
           document.getElementById('msg').innerText = "Starting download...";
